@@ -8,7 +8,6 @@ import 'package:json_pro/json_pro.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/common/old_city.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
 
 class OldCitiesAdapter extends Adapter<OldCitiesResponse> {

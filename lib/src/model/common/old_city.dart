@@ -2,6 +2,10 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+/// This class represents the old cities and old towns of Japan.
+///
+/// This class contains administrative [code] and [name] for Japanese cities, towns, and villages
+/// for these cities, towns, and villages.
 class OldCity {
   /// Returns the new instance if [OldCity] based on arguments.
   OldCity.from({

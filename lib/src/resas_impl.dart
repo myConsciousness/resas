@@ -10,11 +10,10 @@ import 'package:resas/resas.dart';
 import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/old_cities_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
-import 'package:resas/src/response/common/cities_response.dart';
-import 'package:resas/src/response/common/old_cities_response.dart';
-import 'package:resas/src/response/common/prefectures_response.dart';
 
+/// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {
+  /// Returns the new instance of [ResasImpl] based on [key].
   ResasImpl.from({
     required String key,
   }) {

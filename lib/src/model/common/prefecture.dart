@@ -2,6 +2,9 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+/// This class represents the prefecture of Japan.
+///
+/// This class contains the administrative [code] and [name] of the prefecture in Japan.
 class Prefecture {
   /// Returns the new instance of [Prefecture] based on arguments.
   Prefecture.from({

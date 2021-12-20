@@ -6,6 +6,7 @@
 import 'package:resas/src/response/response.dart';
 import 'package:resas/src/response/status.dart';
 
+/// This class represents the common factor of response from RESAS API.
 abstract class ResasResponse extends Response {
   ResasResponse.from({
     required Status status,

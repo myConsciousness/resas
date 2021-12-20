@@ -5,6 +5,12 @@
 // Project imports:
 import 'package:resas/src/const/city_type.dart';
 
+export 'package:resas/src/const/city_type.dart';
+
+/// This class represents the cities and towns of Japan.
+///
+/// This class contains administrative [code] and [name] for Japanese cities, towns, and villages,
+/// as well as [type] for these cities, towns, and villages.
 class City {
   /// Returns the new instance if [City] based on arguments.
   City.from({

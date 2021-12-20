@@ -3,7 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Package imports:
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 // Project imports:
 import 'package:resas/src/response/resas_response.dart';
@@ -23,6 +23,6 @@ abstract class Adapter<R extends ResasResponse> {
   /// Converts the [response] given as an argument into an entity object
   /// corresponding to each RESAS API and returns it.
   R convert({
-    required http.Response response,
+    required Response response,
   });
 }

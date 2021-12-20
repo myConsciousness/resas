@@ -8,7 +8,6 @@ import 'package:json_pro/json_pro.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
 class PrefectureAdapter extends Adapter<PrefecturesResponse> {

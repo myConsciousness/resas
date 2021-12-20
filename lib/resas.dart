@@ -5,3 +5,9 @@
 library resas;
 
 export 'src/resas.dart';
+
+export 'src/response/response.dart';
+export 'src/response/resas_response.dart';
+export 'src/response/common/prefectures_response.dart';
+export 'src/response/common/cities_response.dart';
+export 'src/response/common/old_cities_response.dart';

@@ -10,6 +10,8 @@ import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/response/resas_response.dart';
 import 'package:resas/src/response/status.dart';
 
+export 'package:resas/src/model/common/prefecture.dart';
+
 class PrefecturesResponse extends ResasResponse {
   /// Returns the new instance of [PrefecturesResponse] based on arguments.
   PrefecturesResponse.from({

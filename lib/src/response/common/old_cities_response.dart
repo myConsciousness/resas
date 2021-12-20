@@ -10,6 +10,8 @@ import 'package:resas/src/model/common/old_city.dart';
 import 'package:resas/src/response/resas_response.dart';
 import 'package:resas/src/response/status.dart';
 
+export 'package:resas/src/model/common/old_city.dart';
+
 class OldCitiesResponse extends ResasResponse {
   /// Returns the new instance of [OldCitiesResponse] based on arguments.
   OldCitiesResponse.from({

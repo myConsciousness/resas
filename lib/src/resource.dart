@@ -12,6 +12,21 @@ enum Resource {
 
   /// Old cities
   oldCities,
+
+  /// Broad industry classifications
+  broadIndustryClassifications,
+
+  /// Middle industry classifications
+  middleIndustryClassifications,
+
+  /// Narrow industry classifications
+  narrowIndustryClassifications,
+
+  /// Broad job classifications
+  broadJobClassifications,
+
+  /// Middle job classifications
+  middleJobClassifications,
 }
 
 /// The extension of [Resource].
@@ -25,6 +40,16 @@ extension ResourceExt on Resource {
         return 'api/v1/cities';
       case Resource.oldCities:
         return 'api/v1/oldCities';
+      case Resource.broadIndustryClassifications:
+        return 'api/v1/industries/broad';
+      case Resource.middleIndustryClassifications:
+        return 'api/v1/industries/middle';
+      case Resource.narrowIndustryClassifications:
+        return 'api/v1/industries/narrow';
+      case Resource.broadJobClassifications:
+        return 'api/v1/jobs/broad';
+      case Resource.middleJobClassifications:
+        return 'api/v1/jobs/middle';
     }
   }
 }

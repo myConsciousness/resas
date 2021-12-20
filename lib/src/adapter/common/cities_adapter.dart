@@ -46,7 +46,7 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
         City.from(
           code: json.getString(key: 'cityCode'),
           name: json.getString(key: 'cityName'),
-          type: CityTypeExt.toEnum(
+          type: CityTypeFeature.toEnum(
             code: int.parse(json.getString(key: 'bigCityFlag')),
           ),
         ),

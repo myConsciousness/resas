@@ -5,6 +5,8 @@
 // Project imports:
 import 'package:resas/src/resas_impl.dart';
 import 'package:resas/src/response/common/cities_response.dart';
+import 'package:resas/src/response/common/industry_classifications_response.dart';
+import 'package:resas/src/response/common/job_classifications_response.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
@@ -28,5 +30,21 @@ abstract class Resas {
   Future<OldCitiesResponse> oldCities({
     required int prefectureCode,
     required String cityCode,
+  });
+
+  Future<IndustryClassificationsResponse> broadIndustryClassifications();
+
+  Future<IndustryClassificationsResponse> middleIndustryClassifications({
+    required String parentCode,
+  });
+
+  Future<IndustryClassificationsResponse> narrowIndustryClassifications({
+    required String parentCode,
+  });
+
+  Future<JobClassificationsResponse> broadJobClassifications();
+
+  Future<JobClassificationsResponse> middleJobClassifications({
+    required String parentCode,
   });
 }

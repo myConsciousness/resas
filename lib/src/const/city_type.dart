@@ -20,7 +20,7 @@ enum CityType {
   unknown,
 }
 
-extension CityTypeExt on CityType {
+extension CityTypeFeature on CityType {
   /// Returns the code of this city type.
   int get code {
     switch (this) {

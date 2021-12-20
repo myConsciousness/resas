@@ -1,6 +1,6 @@
 name: resas
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
+description: A most easily usable RESAS API wrapper in Dart. With this library, you can easily integrate your application with the RESAS API.
+version: 0.0.1
 homepage: https://github.com/myConsciousness/resas
 
 environment:
@@ -11,7 +11,6 @@ dependencies:
   collection: ^1.15.0
   http: ^0.13.4
   json_pro: ^1.0.0
-  sweet_cookie_jar: ^1.0.4
 
 dev_dependencies:
   lints: ^1.0.0

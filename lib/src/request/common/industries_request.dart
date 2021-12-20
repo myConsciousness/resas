@@ -3,16 +3,15 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/industry_classifications_adapter.dart';
+import 'package:resas/src/adapter/common/industries_adapter.dart';
 import 'package:resas/src/const/classification_type.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/industry_classifications_response.dart';
+import 'package:resas/src/response/common/industries_response.dart';
 
-class IndustryClassificationsRequest
-    extends Request<IndustryClassificationsResponse> {
-  /// Returns the new instance of [IndustryClassificationsRequest] based on argument.
-  IndustryClassificationsRequest.from({
+class IndustriesRequest extends Request<IndustriesResponse> {
+  /// Returns the new instance of [IndustriesRequest] based on argument.
+  IndustriesRequest.from({
     required this.type,
     this.parentCode,
   });
@@ -24,8 +23,8 @@ class IndustryClassificationsRequest
   final String? parentCode;
 
   @override
-  Future<IndustryClassificationsResponse> send() async =>
-      IndustryClassificationsAdapter.of(type: type).convert(
+  Future<IndustriesResponse> send() async =>
+      IndustriesAdapter.of(type: type).convert(
         response: await super.get(
           resource: _resource,
           queryParameters: _queryParameters,
@@ -35,11 +34,11 @@ class IndustryClassificationsRequest
   Resource get _resource {
     switch (type) {
       case ClassificationType.broad:
-        return Resource.broadIndustryClassifications;
+        return Resource.broadIndustries;
       case ClassificationType.middle:
-        return Resource.middleIndustryClassifications;
+        return Resource.middleIndustries;
       case ClassificationType.narrow:
-        return Resource.narrowIndustryClassifications;
+        return Resource.narrowIndustries;
     }
   }
 

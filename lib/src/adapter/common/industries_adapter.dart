@@ -10,12 +10,11 @@ import 'package:json_pro/json_pro.dart';
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification_type.dart';
 import 'package:resas/src/model/common/industry_classification.dart';
-import 'package:resas/src/response/common/industry_classifications_response.dart';
+import 'package:resas/src/response/common/industries_response.dart';
 
-class IndustryClassificationsAdapter
-    extends Adapter<IndustryClassificationsResponse> {
-  /// Returns the new instance of [IndustryClassificationsAdapter] based on [type].
-  IndustryClassificationsAdapter.of({
+class IndustriesAdapter extends Adapter<IndustriesResponse> {
+  /// Returns the new instance of [IndustriesAdapter] based on [type].
+  IndustriesAdapter.of({
     required this.type,
   });
 
@@ -23,7 +22,7 @@ class IndustryClassificationsAdapter
   final ClassificationType type;
 
   @override
-  IndustryClassificationsResponse convert({
+  IndustriesResponse convert({
     required Response response,
   }) =>
       _buildIndustryClassificationResponse(
@@ -53,11 +52,11 @@ class IndustryClassificationsAdapter
     }
   }
 
-  IndustryClassificationsResponse _buildIndustryClassificationResponse({
+  IndustriesResponse _buildIndustryClassificationResponse({
     required Response response,
     required Json json,
   }) =>
-      IndustryClassificationsResponse.from(
+      IndustriesResponse.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,

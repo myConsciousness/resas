@@ -9,12 +9,12 @@ import 'package:cache_storage/cache_storage.dart';
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification_type.dart';
 import 'package:resas/src/request/common/cities_request.dart';
-import 'package:resas/src/request/common/industry_classifications_request.dart';
-import 'package:resas/src/request/common/job_classifitications_request.dart';
+import 'package:resas/src/request/common/industries_request.dart';
+import 'package:resas/src/request/common/jobs_request.dart';
 import 'package:resas/src/request/common/old_cities_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
-import 'package:resas/src/response/common/industry_classifications_response.dart';
-import 'package:resas/src/response/common/job_classifications_response.dart';
+import 'package:resas/src/response/common/industries_response.dart';
+import 'package:resas/src/response/common/jobs_response.dart';
 
 /// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {
@@ -49,41 +49,40 @@ class ResasImpl implements Resas {
       ).send();
 
   @override
-  Future<IndustryClassificationsResponse>
-      broadIndustryClassifications() async =>
-          await IndustryClassificationsRequest.from(
-            type: ClassificationType.broad,
-          ).send();
+  Future<IndustriesResponse> broadIndustryClassifications() async =>
+      await IndustriesRequest.from(
+        type: ClassificationType.broad,
+      ).send();
 
   @override
-  Future<IndustryClassificationsResponse> middleIndustryClassifications({
+  Future<IndustriesResponse> middleIndustryClassifications({
     required String parentCode,
   }) async =>
-      await IndustryClassificationsRequest.from(
+      await IndustriesRequest.from(
         type: ClassificationType.middle,
         parentCode: parentCode,
       ).send();
 
   @override
-  Future<IndustryClassificationsResponse> narrowIndustryClassifications({
+  Future<IndustriesResponse> narrowIndustryClassifications({
     required String parentCode,
   }) async =>
-      await IndustryClassificationsRequest.from(
+      await IndustriesRequest.from(
         type: ClassificationType.narrow,
         parentCode: parentCode,
       ).send();
 
   @override
-  Future<JobClassificationsResponse> broadJobClassifications() async =>
-      await JobClassificationRequest.from(
+  Future<JobsResponse> broadJobClassifications() async =>
+      await JobsRequest.from(
         type: ClassificationType.broad,
       ).send();
 
   @override
-  Future<JobClassificationsResponse> middleJobClassifications({
+  Future<JobsResponse> middleJobClassifications({
     required String parentCode,
   }) async =>
-      await JobClassificationRequest.from(
+      await JobsRequest.from(
         type: ClassificationType.middle,
         parentCode: parentCode,
       ).send();

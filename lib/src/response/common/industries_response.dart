@@ -8,12 +8,12 @@ import 'package:collection/collection.dart';
 // Project imports:
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification_type.dart';
-import 'package:resas/src/model/common/job_classification.dart';
+import 'package:resas/src/model/common/industry_classification.dart';
 import 'package:resas/src/response/status.dart';
 
-class JobClassificationsResponse extends ResasResponse {
-  /// Returns the new instance of [JobClassificationsResponse] based on arguments.
-  JobClassificationsResponse.from({
+class IndustriesResponse extends ResasResponse {
+  /// Returns the new instance of [IndustriesResponse] based on arguments.
+  IndustriesResponse.from({
     required int statusCode,
     required String reasonPhrase,
     required Map<String, String> headers,
@@ -29,22 +29,22 @@ class JobClassificationsResponse extends ResasResponse {
           message: message,
         );
 
-  /// The classificationType type
+  /// The classification type
   final ClassificationType classificationType;
 
-  /// The job classification
-  final List<JobClassification> results;
+  /// The industry classification
+  final List<IndustryClassification> results;
 
   @override
   String toString() =>
-      'JobClassificationResponse(classificationType: $classificationType, results: $results)';
+      'IndustriesResponse(classificationType: $classificationType, results: $results)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
 
-    return other is JobClassificationsResponse &&
+    return other is IndustriesResponse &&
         other.classificationType == classificationType &&
         listEquals(other.results, results);
   }

@@ -5,8 +5,8 @@
 // Project imports:
 import 'package:resas/src/resas_impl.dart';
 import 'package:resas/src/response/common/cities_response.dart';
-import 'package:resas/src/response/common/industry_classifications_response.dart';
-import 'package:resas/src/response/common/job_classifications_response.dart';
+import 'package:resas/src/response/common/industries_response.dart';
+import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
@@ -32,19 +32,19 @@ abstract class Resas {
     required String cityCode,
   });
 
-  Future<IndustryClassificationsResponse> broadIndustryClassifications();
+  Future<IndustriesResponse> broadIndustryClassifications();
 
-  Future<IndustryClassificationsResponse> middleIndustryClassifications({
+  Future<IndustriesResponse> middleIndustryClassifications({
     required String parentCode,
   });
 
-  Future<IndustryClassificationsResponse> narrowIndustryClassifications({
+  Future<IndustriesResponse> narrowIndustryClassifications({
     required String parentCode,
   });
 
-  Future<JobClassificationsResponse> broadJobClassifications();
+  Future<JobsResponse> broadJobClassifications();
 
-  Future<JobClassificationsResponse> middleJobClassifications({
+  Future<JobsResponse> middleJobClassifications({
     required String parentCode,
   });
 }

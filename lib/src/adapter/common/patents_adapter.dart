@@ -9,12 +9,12 @@ import 'package:json_pro/json_pro.dart';
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification_type.dart';
-import 'package:resas/src/model/common/job_classification.dart';
-import 'package:resas/src/response/common/job_classifications_response.dart';
+import 'package:resas/src/model/common/patent.dart';
+import 'package:resas/src/response/common/patents_response.dart';
 
-class JobClassificationsAdapter extends Adapter<JobClassificationsResponse> {
-  /// Returns the new instance of [JobClassificationsAdapter] based on [type].
-  JobClassificationsAdapter.of({
+class PatentsAdapter extends Adapter<PatentsResponse> {
+  /// Returns the new instance of [PatentsAdapter] based on [type].
+  PatentsAdapter.of({
     required this.type,
   });
 
@@ -22,10 +22,10 @@ class JobClassificationsAdapter extends Adapter<JobClassificationsResponse> {
   final ClassificationType type;
 
   @override
-  JobClassificationsResponse convert({
+  PatentsResponse convert({
     required Response response,
   }) =>
-      _buildJobClassificationResponse(
+      _buildPatentsResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
@@ -33,9 +33,9 @@ class JobClassificationsAdapter extends Adapter<JobClassificationsResponse> {
   String get _codeKey {
     switch (type) {
       case ClassificationType.broad:
-        return 'iscoCode';
+        return 'tecCode';
       case ClassificationType.middle:
-        return 'ismcoCode';
+        return 'themeCode';
       case ClassificationType.narrow:
         throw UnimplementedError();
     }
@@ -44,19 +44,19 @@ class JobClassificationsAdapter extends Adapter<JobClassificationsResponse> {
   String get _nameKey {
     switch (type) {
       case ClassificationType.broad:
-        return 'iscoName';
+        return 'tecName';
       case ClassificationType.middle:
-        return 'ismcoName';
+        return 'themeName';
       case ClassificationType.narrow:
         throw UnimplementedError();
     }
   }
 
-  JobClassificationsResponse _buildJobClassificationResponse({
+  PatentsResponse _buildPatentsResponse({
     required Response response,
     required Json json,
   }) =>
-      JobClassificationsResponse.from(
+      PatentsResponse.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
@@ -67,13 +67,13 @@ class JobClassificationsAdapter extends Adapter<JobClassificationsResponse> {
         ),
       );
 
-  List<JobClassification> _buildResults({
+  List<Patent> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <JobClassification>[];
+    final results = <Patent>[];
     for (final json in jsonList) {
       results.add(
-        JobClassification.from(
+        Patent.from(
           code: json.getString(key: _codeKey),
           name: json.getString(key: _nameKey),
         ),

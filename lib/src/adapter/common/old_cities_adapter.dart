@@ -5,28 +5,27 @@
 import 'package:http/http.dart';
 import 'package:json_pro/json_pro.dart';
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/const/city_type.dart';
-import 'package:resas/src/model/common/city.dart';
-import 'package:resas/src/response/common/cities_response.dart';
+import 'package:resas/src/model/common/old_city.dart';
+import 'package:resas/src/response/common/old_cities_response.dart';
 
-class CitiesAdapter extends Adapter<CitiesResponse> {
-  /// Returns the new instance of [CitiesAdapter].
-  CitiesAdapter.newInstance();
+class OldCitiesAdapter extends Adapter<OldCitiesResponse> {
+  /// Returns the new instance of [OldCitiesResponse].
+  OldCitiesAdapter.newInstance();
 
   @override
-  CitiesResponse convert({
+  OldCitiesResponse convert({
     required Response response,
   }) =>
-      _buildCityResponse(
+      _buildOldCitiesResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
 
-  CitiesResponse _buildCityResponse({
+  OldCitiesResponse _buildOldCitiesResponse({
     required Response response,
     required Json json,
   }) =>
-      CitiesResponse.from(
+      OldCitiesResponse.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
@@ -36,18 +35,15 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
         ),
       );
 
-  List<City> _buildResults({
+  List<OldCity> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <City>[];
+    final results = <OldCity>[];
     for (final json in jsonList) {
       results.add(
-        City.from(
-          code: json.getString(key: 'cityCode'),
-          name: json.getString(key: 'cityName'),
-          type: CityTypeExt.toEnum(
-            code: int.parse(json.getString(key: 'bigCityFlag')),
-          ),
+        OldCity.from(
+          code: json.getString(key: 'oldCityCode'),
+          name: json.getString(key: 'oldCityName'),
         ),
       );
     }

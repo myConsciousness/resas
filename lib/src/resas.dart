@@ -4,6 +4,7 @@
 
 import 'package:resas/src/resas_impl.dart';
 import 'package:resas/src/response/common/cities_response.dart';
+import 'package:resas/src/response/common/old_cities_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
 abstract class Resas {
@@ -16,5 +17,10 @@ abstract class Resas {
 
   Future<CitiesResponse> cities({
     required int prefectureCode,
+  });
+
+  Future<OldCitiesResponse> oldCities({
+    required int prefectureCode,
+    required String cityCode,
   });
 }

@@ -4,13 +4,13 @@
 
 import 'package:collection/collection.dart';
 
-import 'package:resas/src/model/common/city.dart';
+import 'package:resas/src/model/common/old_city.dart';
 import 'package:resas/src/response/resas_response.dart';
 import 'package:resas/src/response/status.dart';
 
-class CitiesResponse extends ResasResponse {
-  /// Returns the new instance of [CitiesResponse] based on arguments.
-  CitiesResponse.from({
+class OldCitiesResponse extends ResasResponse {
+  /// Returns the new instance of [OldCitiesResponse] based on arguments.
+  OldCitiesResponse.from({
     required int statusCode,
     required String reasonPhrase,
     required Map<String, String> headers,
@@ -25,18 +25,18 @@ class CitiesResponse extends ResasResponse {
           message: message,
         );
 
-  /// The cities
-  final List<City> results;
+  /// The old cities
+  final List<OldCity> results;
 
   @override
-  String toString() => 'CitiesResponse(results: $results)';
+  String toString() => 'OldCitiesResponse(results: $results)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
 
-    return other is CitiesResponse && listEquals(other.results, results);
+    return other is OldCitiesResponse && listEquals(other.results, results);
   }
 
   @override

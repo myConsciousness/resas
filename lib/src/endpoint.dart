@@ -14,7 +14,7 @@ extension EndpointExt on Endpoint {
   String get url {
     switch (this) {
       case Endpoint.resasPortal:
-        return 'https://opendata.resas-portal.go.jp';
+        return 'opendata.resas-portal.go.jp';
     }
   }
 }

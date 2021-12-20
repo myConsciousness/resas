@@ -6,6 +6,9 @@
 enum Resource {
   /// Prefectures
   prefectures,
+
+  /// Cities
+  cities,
 }
 
 /// The extension of [Resource].
@@ -15,6 +18,8 @@ extension ResourceExt on Resource {
     switch (this) {
       case Resource.prefectures:
         return 'api/v1/prefectures';
+      case Resource.cities:
+        return 'api/v1/cities';
     }
   }
 }

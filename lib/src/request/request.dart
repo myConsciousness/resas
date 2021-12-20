@@ -31,17 +31,24 @@ abstract class Request<R extends ResasResponse> {
 
   Uri _buildUri({
     required Resource resource,
-    required List<String> parameters,
-  }) {
-    return Uri.parse('${_endpoint.url}/${resource.url}');
-  }
+    required Map<String, String> queryParameters,
+  }) =>
+      Uri(
+        scheme: 'https',
+        host: _endpoint.url,
+        path: resource.url,
+        queryParameters: queryParameters,
+      );
 
   Future<http.Response> get({
     required Resource resource,
-    List<String> parameters = const [],
+    Map<String, String> queryParameters = const {},
   }) async =>
       await http.get(
-        _buildUri(resource: Resource.prefectures, parameters: parameters),
+        _buildUri(
+          resource: resource,
+          queryParameters: queryParameters,
+        ),
         headers: {
           'X-API-KEY': CacheStorage.open().match(key: 'RESAS_API_KEY'),
         },

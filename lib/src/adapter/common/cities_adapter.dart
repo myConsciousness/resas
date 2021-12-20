@@ -5,45 +5,50 @@
 import 'package:http/http.dart';
 import 'package:json_pro/json_pro.dart';
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/common/prefecture.dart';
-import 'package:resas/src/response/common/prefectures_response.dart';
+import 'package:resas/src/const/city_type.dart';
+import 'package:resas/src/model/common/city.dart';
+import 'package:resas/src/response/common/cities_response.dart';
 
-class PrefectureAdapter extends Adapter<PrefecturesResponse> {
-  /// Returns the new instance of [PrefectureAdapter].
-  PrefectureAdapter.newInstance();
+class CitiesAdapter extends Adapter<CitiesResponse> {
+  /// Returns the new instance of [CitiesAdapter].
+  CitiesAdapter.newInstance();
 
   @override
-  PrefecturesResponse convert({
+  CitiesResponse convert({
     required Response response,
   }) =>
-      _buildPrefecturesResponse(
+      _buildCityResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
 
-  PrefecturesResponse _buildPrefecturesResponse({
+  CitiesResponse _buildCityResponse({
     required Response response,
     required Json json,
   }) =>
-      PrefecturesResponse.from(
+      CitiesResponse.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
         message: json.getString(key: 'message'),
-        results: _buildResults(
+        result: _buildResults(
           jsonList: json.getJsonList(key: 'result'),
         ),
       );
 
-  List<Prefecture> _buildResults({
+  List<City> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <Prefecture>[];
+    final results = <City>[];
     for (final json in jsonList) {
       results.add(
-        Prefecture.from(
-          code: json.getInt(key: 'prefCode'),
-          name: json.getString(key: 'prefName'),
+        City.from(
+          prefectureCode: json.getInt(key: 'prefCode'),
+          code: json.getString(key: 'cityCode'),
+          name: json.getString(key: 'cityName'),
+          type: CityTypeExt.toEnum(
+            code: int.parse(json.getString(key: 'bigCityFlag')),
+          ),
         ),
       );
     }

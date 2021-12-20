@@ -4,7 +4,9 @@
 
 import 'package:cache_storage/cache_storage.dart';
 import 'package:resas/resas.dart';
+import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
+import 'package:resas/src/response/common/cities_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
 class ResasImpl implements Resas {
@@ -20,4 +22,10 @@ class ResasImpl implements Resas {
   @override
   Future<PrefecturesResponse> prefectures() async =>
       PrefecturesRequest.newInstance().send();
+
+  @override
+  Future<CitiesResponse> cities({
+    required int prefectureCode,
+  }) async =>
+      CitiesRequest.from(prefectureCode: prefectureCode).send();
 }

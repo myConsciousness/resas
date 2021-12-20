@@ -2,6 +2,8 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:collection/collection.dart';
+
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification_type.dart';
 import 'package:resas/src/model/common/patent.dart';
@@ -30,4 +32,21 @@ class PatentsResponse extends ResasResponse {
 
   /// The patents
   final List<Patent> results;
+
+  @override
+  String toString() =>
+      'PatentsResponse(classificationType: $classificationType, results: $results)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    final listEquals = const DeepCollectionEquality().equals;
+
+    return other is PatentsResponse &&
+        other.classificationType == classificationType &&
+        listEquals(other.results, results);
+  }
+
+  @override
+  int get hashCode => classificationType.hashCode ^ results.hashCode;
 }

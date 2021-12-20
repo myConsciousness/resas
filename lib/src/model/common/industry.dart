@@ -2,9 +2,9 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-class IndustryClassification {
-  /// Returns the new instance of [IndustryClassification] based on arguments.
-  IndustryClassification.from({
+class Industry {
+  /// Returns the new instance of [Industry] based on arguments.
+  Industry.from({
     required this.code,
     required this.name,
   });
@@ -16,15 +16,13 @@ class IndustryClassification {
   final String name;
 
   @override
-  String toString() => 'IndustryClassification(code: $code, name: $name)';
+  String toString() => 'Industry(code: $code, name: $name)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is IndustryClassification &&
-        other.code == code &&
-        other.name == name;
+    return other is Industry && other.code == code && other.name == name;
   }
 
   @override

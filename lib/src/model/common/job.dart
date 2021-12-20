@@ -2,9 +2,9 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-class JobClassification {
-  /// Returns the new instance of [JobClassification] based on arguments.
-  JobClassification.from({
+class Job {
+  /// Returns the new instance of [Job] based on arguments.
+  Job.from({
     required this.code,
     required this.name,
   });
@@ -16,15 +16,13 @@ class JobClassification {
   final String name;
 
   @override
-  String toString() => 'JobClassification(code: $code, name: $name)';
+  String toString() => 'Job(code: $code, name: $name)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is JobClassification &&
-        other.code == code &&
-        other.name == name;
+    return other is Job && other.code == code && other.name == name;
   }
 
   @override

@@ -25,7 +25,7 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
   PatentsResponse convert({
     required Response response,
   }) =>
-      _buildPatentsResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
@@ -52,7 +52,7 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
     }
   }
 
-  PatentsResponse _buildPatentsResponse({
+  PatentsResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>

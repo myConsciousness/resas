@@ -9,7 +9,7 @@ import 'package:json_pro/json_pro.dart';
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification_type.dart';
-import 'package:resas/src/model/common/industry_classification.dart';
+import 'package:resas/src/model/common/industry.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 
 class IndustriesAdapter extends Adapter<IndustriesResponse> {
@@ -25,7 +25,7 @@ class IndustriesAdapter extends Adapter<IndustriesResponse> {
   IndustriesResponse convert({
     required Response response,
   }) =>
-      _buildIndustryClassificationResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
@@ -52,7 +52,7 @@ class IndustriesAdapter extends Adapter<IndustriesResponse> {
     }
   }
 
-  IndustriesResponse _buildIndustryClassificationResponse({
+  IndustriesResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>
@@ -67,13 +67,13 @@ class IndustriesAdapter extends Adapter<IndustriesResponse> {
         ),
       );
 
-  List<IndustryClassification> _buildResults({
+  List<Industry> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <IndustryClassification>[];
+    final results = <Industry>[];
     for (final json in jsonList) {
       results.add(
-        IndustryClassification.from(
+        Industry.from(
           code: json.getString(key: _codeKey),
           name: json.getString(key: _nameKey),
         ),

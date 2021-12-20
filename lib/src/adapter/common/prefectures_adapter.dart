@@ -18,12 +18,12 @@ class PrefectureAdapter extends Adapter<PrefecturesResponse> {
   PrefecturesResponse convert({
     required Response response,
   }) =>
-      _buildPrefecturesResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
 
-  PrefecturesResponse _buildPrefecturesResponse({
+  PrefecturesResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>

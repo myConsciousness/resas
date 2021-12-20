@@ -9,7 +9,7 @@ import 'package:json_pro/json_pro.dart';
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification_type.dart';
-import 'package:resas/src/model/common/job_classification.dart';
+import 'package:resas/src/model/common/job.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
 
 class JobsAdapter extends Adapter<JobsResponse> {
@@ -25,7 +25,7 @@ class JobsAdapter extends Adapter<JobsResponse> {
   JobsResponse convert({
     required Response response,
   }) =>
-      _buildJobClassificationResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
@@ -52,7 +52,7 @@ class JobsAdapter extends Adapter<JobsResponse> {
     }
   }
 
-  JobsResponse _buildJobClassificationResponse({
+  JobsResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>
@@ -67,13 +67,13 @@ class JobsAdapter extends Adapter<JobsResponse> {
         ),
       );
 
-  List<JobClassification> _buildResults({
+  List<Job> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <JobClassification>[];
+    final results = <Job>[];
     for (final json in jsonList) {
       results.add(
-        JobClassification.from(
+        Job.from(
           code: json.getString(key: _codeKey),
           name: json.getString(key: _nameKey),
         ),

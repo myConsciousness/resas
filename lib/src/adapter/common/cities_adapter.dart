@@ -18,12 +18,12 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
   CitiesResponse convert({
     required Response response,
   }) =>
-      _buildCityResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
 
-  CitiesResponse _buildCityResponse({
+  CitiesResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>

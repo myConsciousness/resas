@@ -12,9 +12,11 @@ import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/industries_request.dart';
 import 'package:resas/src/request/common/jobs_request.dart';
 import 'package:resas/src/request/common/old_cities_request.dart';
+import 'package:resas/src/request/common/patents_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
+import 'package:resas/src/response/common/patents_response.dart';
 
 /// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {
@@ -49,13 +51,13 @@ class ResasImpl implements Resas {
       ).send();
 
   @override
-  Future<IndustriesResponse> broadIndustryClassifications() async =>
+  Future<IndustriesResponse> broadIndustries() async =>
       await IndustriesRequest.from(
         type: ClassificationType.broad,
       ).send();
 
   @override
-  Future<IndustriesResponse> middleIndustryClassifications({
+  Future<IndustriesResponse> middleIndustries({
     required String parentCode,
   }) async =>
       await IndustriesRequest.from(
@@ -64,7 +66,7 @@ class ResasImpl implements Resas {
       ).send();
 
   @override
-  Future<IndustriesResponse> narrowIndustryClassifications({
+  Future<IndustriesResponse> narrowIndustries({
     required String parentCode,
   }) async =>
       await IndustriesRequest.from(
@@ -73,16 +75,29 @@ class ResasImpl implements Resas {
       ).send();
 
   @override
-  Future<JobsResponse> broadJobClassifications() async =>
-      await JobsRequest.from(
+  Future<JobsResponse> broadJobs() async => await JobsRequest.from(
         type: ClassificationType.broad,
       ).send();
 
   @override
-  Future<JobsResponse> middleJobClassifications({
+  Future<JobsResponse> middleJobs({
     required String parentCode,
   }) async =>
       await JobsRequest.from(
+        type: ClassificationType.middle,
+        parentCode: parentCode,
+      ).send();
+
+  @override
+  Future<PatentsResponse> broadPatents() async => await PatentsRequest.from(
+        type: ClassificationType.broad,
+      ).send();
+
+  @override
+  Future<PatentsResponse> middlePatents({
+    required String parentCode,
+  }) async =>
+      await PatentsRequest.from(
         type: ClassificationType.middle,
         parentCode: parentCode,
       ).send();

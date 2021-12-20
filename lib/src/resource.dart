@@ -57,9 +57,9 @@ extension ResourceExt on Resource {
       case Resource.middleJobs:
         return 'api/v1/jobs/middle';
       case Resource.broadPatents:
-        return 'api/v1/jobs/broad';
+        return 'api/v1/patents/broad';
       case Resource.middlePatents:
-        return 'api/v1/jobs/middle';
+        return 'api/v1/patents/middle';
     }
   }
 }

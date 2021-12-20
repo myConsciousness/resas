@@ -18,12 +18,12 @@ class OldCitiesAdapter extends Adapter<OldCitiesResponse> {
   OldCitiesResponse convert({
     required Response response,
   }) =>
-      _buildOldCitiesResponse(
+      _buildResponse(
         response: response,
         json: Json.fromBytes(bytes: response.bodyBytes),
       );
 
-  OldCitiesResponse _buildOldCitiesResponse({
+  OldCitiesResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>

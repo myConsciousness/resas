@@ -8,6 +8,7 @@ import 'package:resas/src/response/common/cities_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
+import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 
 /// This abstract class provides feature for easy access to the RESAS API.
@@ -32,19 +33,25 @@ abstract class Resas {
     required String cityCode,
   });
 
-  Future<IndustriesResponse> broadIndustryClassifications();
+  Future<IndustriesResponse> broadIndustries();
 
-  Future<IndustriesResponse> middleIndustryClassifications({
+  Future<IndustriesResponse> middleIndustries({
     required String parentCode,
   });
 
-  Future<IndustriesResponse> narrowIndustryClassifications({
+  Future<IndustriesResponse> narrowIndustries({
     required String parentCode,
   });
 
-  Future<JobsResponse> broadJobClassifications();
+  Future<JobsResponse> broadJobs();
 
-  Future<JobsResponse> middleJobClassifications({
+  Future<JobsResponse> middleJobs({
+    required String parentCode,
+  });
+
+  Future<PatentsResponse> broadPatents();
+
+  Future<PatentsResponse> middlePatents({
     required String parentCode,
   });
 }

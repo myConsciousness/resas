@@ -8,7 +8,7 @@ import 'package:collection/collection.dart';
 // Project imports:
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification_type.dart';
-import 'package:resas/src/model/common/job_classification.dart';
+import 'package:resas/src/model/common/job.dart';
 import 'package:resas/src/response/status.dart';
 
 class JobsResponse extends ResasResponse {
@@ -33,7 +33,7 @@ class JobsResponse extends ResasResponse {
   final ClassificationType classificationType;
 
   /// The job classification
-  final List<JobClassification> results;
+  final List<Job> results;
 
   @override
   String toString() =>

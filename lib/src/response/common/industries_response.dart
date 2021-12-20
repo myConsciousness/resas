@@ -32,7 +32,7 @@ class IndustriesResponse extends ResasResponse {
   /// The classification type
   final ClassificationType classificationType;
 
-  /// The industry classification
+  /// The industries
   final List<Industry> results;
 
   @override

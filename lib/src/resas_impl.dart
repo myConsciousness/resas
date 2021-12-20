@@ -9,11 +9,13 @@ import 'package:cache_storage/cache_storage.dart';
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification_type.dart';
 import 'package:resas/src/request/common/cities_request.dart';
+import 'package:resas/src/request/common/custom_houses_request.dart';
 import 'package:resas/src/request/common/industries_request.dart';
 import 'package:resas/src/request/common/jobs_request.dart';
 import 'package:resas/src/request/common/old_cities_request.dart';
 import 'package:resas/src/request/common/patents_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
+import 'package:resas/src/response/common/custom_houses_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
@@ -100,5 +102,13 @@ class ResasImpl implements Resas {
       await PatentsRequest.from(
         type: ClassificationType.middle,
         parentCode: parentCode,
+      ).send();
+
+  @override
+  Future<CustomHousesResponse> customHouses({
+    required int prefectureCode,
+  }) async =>
+      CustomHousesRequest.from(
+        prefectureCode: prefectureCode,
       ).send();
 }

@@ -33,6 +33,9 @@ enum Resource {
 
   /// Middle patents
   middlePatents,
+
+  /// Custom houses
+  customHouses,
 }
 
 /// The extension of [Resource].
@@ -60,6 +63,8 @@ extension ResourceExt on Resource {
         return 'api/v1/patents/broad';
       case Resource.middlePatents:
         return 'api/v1/patents/middle';
+      case Resource.customHouses:
+        return 'api/v1/customs';
     }
   }
 }

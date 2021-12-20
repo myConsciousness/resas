@@ -2,8 +2,11 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:http/http.dart';
 import 'package:json_pro/json_pro.dart';
+
+// Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/city_type.dart';
 import 'package:resas/src/model/common/city.dart';

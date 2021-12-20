@@ -2,8 +2,10 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:collection/collection.dart';
 
+// Project imports:
 import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/response/resas_response.dart';
 import 'package:resas/src/response/status.dart';

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Package imports:
+// Project imports:
 import 'package:resas/src/adapter/common/old_cities_adapter.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';

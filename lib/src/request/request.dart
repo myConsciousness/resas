@@ -2,11 +2,14 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:cache_storage/cache_storage.dart';
+import 'package:http/http.dart' as http;
+
+// Project imports:
 import 'package:resas/src/endpoint.dart';
 import 'package:resas/src/resource.dart';
 import 'package:resas/src/response/resas_response.dart';
-import 'package:http/http.dart' as http;
 
 /// This is an abstract class that provides the functionality to send requests
 /// to the RESAS API. Then convert the response returned from the RESAS API

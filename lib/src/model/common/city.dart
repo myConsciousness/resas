@@ -7,14 +7,10 @@ import 'package:resas/src/const/city_type.dart';
 class City {
   /// Returns the new instance if [City] based on arguments.
   City.from({
-    required this.prefectureCode,
     required this.code,
     required this.name,
     required this.type,
   });
-
-  /// The prefecture code
-  final int prefectureCode;
 
   /// The code
   final String code;
@@ -26,26 +22,18 @@ class City {
   final CityType type;
 
   @override
-  String toString() {
-    return 'City(prefectureCode: $prefectureCode, code: $code, name: $name, type: $type)';
-  }
+  String toString() => 'City(code: $code, name: $name, type: $type)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
     return other is City &&
-        other.prefectureCode == prefectureCode &&
         other.code == code &&
         other.name == name &&
         other.type == type;
   }
 
   @override
-  int get hashCode {
-    return prefectureCode.hashCode ^
-        code.hashCode ^
-        name.hashCode ^
-        type.hashCode;
-  }
+  int get hashCode => code.hashCode ^ name.hashCode ^ type.hashCode;
 }

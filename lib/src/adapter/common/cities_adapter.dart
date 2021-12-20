@@ -43,7 +43,6 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
     for (final json in jsonList) {
       results.add(
         City.from(
-          prefectureCode: json.getInt(key: 'prefCode'),
           code: json.getString(key: 'cityCode'),
           name: json.getString(key: 'cityName'),
           type: CityTypeExt.toEnum(

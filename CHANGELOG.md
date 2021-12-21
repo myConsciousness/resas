@@ -1,5 +1,9 @@
 # Release Note
 
+## 0.1.1
+
+- Fixed document.
+
 ## 0.1.0
 
 - Added 産業大分類 api/v1/industries/broad

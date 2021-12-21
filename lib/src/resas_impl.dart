@@ -14,6 +14,7 @@ import 'package:resas/src/request/common/custom_houses_request.dart';
 import 'package:resas/src/request/common/industries_request.dart';
 import 'package:resas/src/request/common/jobs_request.dart';
 import 'package:resas/src/request/common/old_cities_request.dart';
+import 'package:resas/src/request/common/patentee_locations_request.dart';
 import 'package:resas/src/request/common/patents_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
 import 'package:resas/src/request/common/trading_areas_request.dart';
@@ -21,6 +22,7 @@ import 'package:resas/src/response/common/agriculture_departments_response.dart'
 import 'package:resas/src/response/common/custom_houses_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
+import 'package:resas/src/response/common/patentee_locations_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/trading_areas_response.dart';
 
@@ -134,4 +136,14 @@ class ResasImpl implements Resas {
   @override
   Future<AgricultureDepartmentsResponse> agricultureDepartments() async =>
       await AgricultureDepartmentsRequest.newInstance().send();
+
+  @override
+  Future<PatenteeLocationsResponse> patenteeLocations({
+    required int prefectureCode,
+    required String cityCode,
+  }) async =>
+      await PatenteeLocationsRequest.from(
+        prefectureCode: prefectureCode,
+        cityCode: cityCode,
+      ).send();
 }

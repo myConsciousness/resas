@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
+import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/resas_impl.dart';
 import 'package:resas/src/response/common/agriculture_departments_response.dart';
 import 'package:resas/src/response/common/cities_response.dart';
@@ -10,6 +11,7 @@ import 'package:resas/src/response/common/custom_houses_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
+import 'package:resas/src/response/common/patentee_locations_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 import 'package:resas/src/response/common/trading_areas_response.dart';
@@ -69,4 +71,9 @@ abstract class Resas {
   });
 
   Future<AgricultureDepartmentsResponse> agricultureDepartments();
+
+  Future<PatenteeLocationsResponse> patenteeLocations({
+    required int prefectureCode,
+    required String cityCode,
+  });
 }

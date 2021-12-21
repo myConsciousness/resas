@@ -45,6 +45,9 @@ enum Resource {
 
   /// Agriculture departments
   agricultureDepartments,
+
+  /// Patentee locations
+  patenteeLocations,
 }
 
 /// The extension of [Resource].
@@ -80,6 +83,8 @@ extension ResourceExt on Resource {
         return 'api/v1/regions/middle';
       case Resource.agricultureDepartments:
         return 'api/v1/regions/agricultureDepartments';
+      case Resource.patenteeLocations:
+        return 'api/v1/patents/locations';
     }
   }
 }

@@ -2,8 +2,10 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:collection/collection.dart';
 
+// Project imports:
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/model/common/trading_item.dart';

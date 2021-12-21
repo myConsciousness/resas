@@ -7,9 +7,9 @@ import 'package:collection/collection.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/const/classification.dart';
-import 'package:resas/src/model/common/trading_area.dart';
 import 'package:resas/src/response/status.dart';
+
+export 'package:resas/src/model/common/trading_area.dart';
 
 class TradingAreasResponse extends ResasResponse {
   /// Returns the new instance of [TradingAreasResponse] based on arguments.

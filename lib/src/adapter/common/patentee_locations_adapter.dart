@@ -8,7 +8,6 @@ import 'package:json_pro/json_pro.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/response/common/patentee_locations_response.dart';
 
 class PatenteeLocationsAdapter extends Adapter<PatenteeLocationsResponse> {

@@ -7,9 +7,9 @@ import 'package:collection/collection.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/const/classification.dart';
-import 'package:resas/src/model/common/industry.dart';
 import 'package:resas/src/response/status.dart';
+
+export 'package:resas/src/model/common/industry.dart';
 
 class IndustriesResponse extends ResasResponse {
   /// Returns the new instance of [IndustriesResponse] based on arguments.

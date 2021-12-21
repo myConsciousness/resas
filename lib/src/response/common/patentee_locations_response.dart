@@ -7,8 +7,9 @@ import 'package:collection/collection.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/response/status.dart';
+
+export 'package:resas/src/model/common/patentee_location.dart';
 
 class PatenteeLocationsResponse extends ResasResponse {
   /// Returns the new instance of [PatenteeLocationsResponse] based on arguments.

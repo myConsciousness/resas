@@ -7,7 +7,6 @@ import 'package:cache_storage/cache_storage.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/request/common/agriculture_departments_request.dart';
 import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/custom_houses_request.dart';
@@ -19,14 +18,6 @@ import 'package:resas/src/request/common/patents_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
 import 'package:resas/src/request/common/trading_areas_request.dart';
 import 'package:resas/src/request/common/trading_items_request.dart';
-import 'package:resas/src/response/common/agriculture_departments_response.dart';
-import 'package:resas/src/response/common/custom_houses_response.dart';
-import 'package:resas/src/response/common/industries_response.dart';
-import 'package:resas/src/response/common/jobs_response.dart';
-import 'package:resas/src/response/common/patentee_locations_response.dart';
-import 'package:resas/src/response/common/patents_response.dart';
-import 'package:resas/src/response/common/trading_areas_response.dart';
-import 'package:resas/src/response/common/trading_items_response.dart';
 
 /// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {

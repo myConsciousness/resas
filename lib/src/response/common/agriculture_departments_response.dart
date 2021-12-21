@@ -7,8 +7,9 @@ import 'package:collection/collection.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/model/common/agriculture_department.dart';
 import 'package:resas/src/response/status.dart';
+
+export 'package:resas/src/model/common/agriculture_department.dart';
 
 class AgricultureDepartmentsResponse extends ResasResponse {
   /// Returns the new instance of [AgricultureDepartmentsResponse] based on arguments.

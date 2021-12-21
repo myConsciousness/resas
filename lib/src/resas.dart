@@ -4,6 +4,7 @@
 
 // Project imports:
 import 'package:resas/src/resas_impl.dart';
+import 'package:resas/src/response/common/agriculture_departments_response.dart';
 import 'package:resas/src/response/common/cities_response.dart';
 import 'package:resas/src/response/common/custom_houses_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
@@ -66,4 +67,6 @@ abstract class Resas {
   Future<TradingAreasResponse> middleTradingAreas({
     required int parentCode,
   });
+
+  Future<AgricultureDepartmentsResponse> agricultureDepartments();
 }

@@ -42,6 +42,9 @@ enum Resource {
 
   /// Middle trading areas
   middleTradingAreas,
+
+  /// Agriculture departments
+  agricultureDepartments,
 }
 
 /// The extension of [Resource].
@@ -75,6 +78,8 @@ extension ResourceExt on Resource {
         return 'api/v1/regions/broad';
       case Resource.middleTradingAreas:
         return 'api/v1/regions/middle';
+      case Resource.agricultureDepartments:
+        return 'api/v1/regions/agricultureDepartments';
     }
   }
 }

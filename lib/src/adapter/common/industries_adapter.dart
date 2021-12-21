@@ -8,18 +8,18 @@ import 'package:json_pro/json_pro.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/const/classification_type.dart';
+import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/model/common/industry.dart';
 import 'package:resas/src/response/common/industries_response.dart';
 
 class IndustriesAdapter extends Adapter<IndustriesResponse> {
-  /// Returns the new instance of [IndustriesAdapter] based on [type].
+  /// Returns the new instance of [IndustriesAdapter] based on [classification].
   IndustriesAdapter.of({
-    required this.type,
+    required this.classification,
   });
 
-  /// The classification type
-  final ClassificationType type;
+  /// The classification
+  final Classification classification;
 
   @override
   IndustriesResponse convert({
@@ -31,23 +31,23 @@ class IndustriesAdapter extends Adapter<IndustriesResponse> {
       );
 
   String get _codeKey {
-    switch (type) {
-      case ClassificationType.broad:
+    switch (classification) {
+      case Classification.broad:
         return 'sicCode';
-      case ClassificationType.middle:
+      case Classification.middle:
         return 'simcCode';
-      case ClassificationType.narrow:
+      case Classification.narrow:
         return 'siscCode';
     }
   }
 
   String get _nameKey {
-    switch (type) {
-      case ClassificationType.broad:
+    switch (classification) {
+      case Classification.broad:
         return 'sicName';
-      case ClassificationType.middle:
+      case Classification.middle:
         return 'simcName';
-      case ClassificationType.narrow:
+      case Classification.narrow:
         return 'siscName';
     }
   }
@@ -61,7 +61,7 @@ class IndustriesAdapter extends Adapter<IndustriesResponse> {
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
         message: json.getString(key: 'message'),
-        classificationType: type,
+        classification: classification,
         results: _buildResults(
           jsonList: json.getJsonList(key: 'result'),
         ),

@@ -36,6 +36,12 @@ enum Resource {
 
   /// Custom houses
   customHouses,
+
+  /// Broad trading areas
+  broadTradingAreas,
+
+  /// Middle trading areas
+  middleTradingAreas,
 }
 
 /// The extension of [Resource].
@@ -65,6 +71,10 @@ extension ResourceExt on Resource {
         return 'api/v1/patents/middle';
       case Resource.customHouses:
         return 'api/v1/customs';
+      case Resource.broadTradingAreas:
+        return 'api/v1/regions/broad';
+      case Resource.middleTradingAreas:
+        return 'api/v1/regions/middle';
     }
   }
 }

@@ -4,7 +4,7 @@
 
 // Project imports:
 import 'package:resas/src/adapter/common/jobs_adapter.dart';
-import 'package:resas/src/const/classification_type.dart';
+import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 import 'package:resas/src/response/common/jobs_response.dart';
@@ -12,18 +12,19 @@ import 'package:resas/src/response/common/jobs_response.dart';
 class JobsRequest extends Request<JobsResponse> {
   /// Returns the new instance of [JobsRequest] based on argument.
   JobsRequest.from({
-    required this.type,
+    required this.classification,
     this.parentCode,
   });
 
-  /// The type
-  final ClassificationType type;
+  /// The classification
+  final Classification classification;
 
   /// The parent code
   final String? parentCode;
 
   @override
-  Future<JobsResponse> send() async => JobsAdapter.of(type: type).convert(
+  Future<JobsResponse> send() async =>
+      JobsAdapter.of(classification: classification).convert(
         response: await super.get(
           resource: _resource,
           queryParameters: _queryParameters,
@@ -31,24 +32,24 @@ class JobsRequest extends Request<JobsResponse> {
       );
 
   Resource get _resource {
-    switch (type) {
-      case ClassificationType.broad:
+    switch (classification) {
+      case Classification.broad:
         return Resource.broadJobs;
-      case ClassificationType.middle:
+      case Classification.middle:
         return Resource.middleJobs;
-      case ClassificationType.narrow:
+      case Classification.narrow:
         throw UnimplementedError();
     }
   }
 
   Map<String, String> get _queryParameters {
-    switch (type) {
-      case ClassificationType.broad:
+    switch (classification) {
+      case Classification.broad:
         return {};
-      case ClassificationType.middle:
+      case Classification.middle:
         assert(parentCode != null);
         return {'iscoCode': parentCode!};
-      case ClassificationType.narrow:
+      case Classification.narrow:
         throw UnimplementedError();
     }
   }

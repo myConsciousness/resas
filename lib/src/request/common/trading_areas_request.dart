@@ -3,15 +3,15 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/patents_adapter.dart';
+import 'package:resas/src/adapter/common/trading_areas_adapter.dart';
 import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/patents_response.dart';
+import 'package:resas/src/response/common/trading_areas_response.dart';
 
-class PatentsRequest extends Request<PatentsResponse> {
-  /// Returns the new instance of [PatentsRequest] based on argument.
-  PatentsRequest.from({
+class TradingAreasRequest extends Request<TradingAreasResponse> {
+  /// Returns the new instance of [TradingAreasRequest] based on argument.
+  TradingAreasRequest.from({
     required this.classification,
     this.parentCode,
   });
@@ -20,11 +20,11 @@ class PatentsRequest extends Request<PatentsResponse> {
   final Classification classification;
 
   /// The parent code
-  final String? parentCode;
+  final int? parentCode;
 
   @override
-  Future<PatentsResponse> send() async =>
-      PatentsAdapter.of(classification: classification).convert(
+  Future<TradingAreasResponse> send() async =>
+      TradingAreasAdapter.of(classification: classification).convert(
         response: await super.get(
           resource: _resource,
           queryParameters: _queryParameters,
@@ -34,9 +34,9 @@ class PatentsRequest extends Request<PatentsResponse> {
   Resource get _resource {
     switch (classification) {
       case Classification.broad:
-        return Resource.broadPatents;
+        return Resource.broadTradingAreas;
       case Classification.middle:
-        return Resource.middlePatents;
+        return Resource.middleTradingAreas;
       case Classification.narrow:
         throw UnimplementedError();
     }
@@ -48,7 +48,7 @@ class PatentsRequest extends Request<PatentsResponse> {
         return {};
       case Classification.middle:
         assert(parentCode != null);
-        return {'tecCode': parentCode!};
+        return {'regionCode': '$parentCode'};
       case Classification.narrow:
         throw UnimplementedError();
     }

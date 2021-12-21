@@ -7,7 +7,7 @@ import 'package:collection/collection.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
-import 'package:resas/src/const/classification_type.dart';
+import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/model/common/industry.dart';
 import 'package:resas/src/response/status.dart';
 
@@ -18,7 +18,7 @@ class IndustriesResponse extends ResasResponse {
     required String reasonPhrase,
     required Map<String, String> headers,
     required String message,
-    required this.classificationType,
+    required this.classification,
     required this.results,
   }) : super.from(
           status: Status.from(
@@ -29,15 +29,15 @@ class IndustriesResponse extends ResasResponse {
           message: message,
         );
 
-  /// The classification type
-  final ClassificationType classificationType;
+  /// The classification
+  final Classification classification;
 
   /// The industries
   final List<Industry> results;
 
   @override
   String toString() =>
-      'IndustriesResponse(classificationType: $classificationType, results: $results)';
+      'IndustriesResponse(classification: $classification, results: $results)';
 
   @override
   bool operator ==(Object other) {
@@ -45,10 +45,10 @@ class IndustriesResponse extends ResasResponse {
     final listEquals = const DeepCollectionEquality().equals;
 
     return other is IndustriesResponse &&
-        other.classificationType == classificationType &&
+        other.classification == classification &&
         listEquals(other.results, results);
   }
 
   @override
-  int get hashCode => classificationType.hashCode ^ results.hashCode;
+  int get hashCode => classification.hashCode ^ results.hashCode;
 }

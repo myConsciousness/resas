@@ -2,19 +2,16 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Package imports:
 import 'package:http/http.dart';
 import 'package:json_pro/json_pro.dart';
-
-// Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification.dart';
-import 'package:resas/src/model/common/patent.dart';
-import 'package:resas/src/response/common/patents_response.dart';
+import 'package:resas/src/model/common/trading_area.dart';
+import 'package:resas/src/response/common/trading_areas_response.dart';
 
-class PatentsAdapter extends Adapter<PatentsResponse> {
-  /// Returns the new instance of [PatentsAdapter] based on [classification].
-  PatentsAdapter.of({
+class TradingAreasAdapter extends Adapter<TradingAreasResponse> {
+  /// Returns the new instance of [TradingAreasAdapter] based on [classification].
+  TradingAreasAdapter.of({
     required this.classification,
   });
 
@@ -22,7 +19,7 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
   final Classification classification;
 
   @override
-  PatentsResponse convert({
+  TradingAreasResponse convert({
     required Response response,
   }) =>
       _buildResponse(
@@ -33,9 +30,9 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
   String get _codeKey {
     switch (classification) {
       case Classification.broad:
-        return 'tecCode';
+        return 'regionCode';
       case Classification.middle:
-        return 'themeCode';
+        return 'countryCode';
       case Classification.narrow:
         throw UnimplementedError();
     }
@@ -44,19 +41,19 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
   String get _nameKey {
     switch (classification) {
       case Classification.broad:
-        return 'tecName';
+        return 'regionName';
       case Classification.middle:
-        return 'themeName';
+        return 'countryName';
       case Classification.narrow:
         throw UnimplementedError();
     }
   }
 
-  PatentsResponse _buildResponse({
+  TradingAreasResponse _buildResponse({
     required Response response,
     required Json json,
   }) =>
-      PatentsResponse.from(
+      TradingAreasResponse.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
@@ -67,15 +64,18 @@ class PatentsAdapter extends Adapter<PatentsResponse> {
         ),
       );
 
-  List<Patent> _buildResults({
+  List<TradingArea> _buildResults({
     required List<Json> jsonList,
   }) {
-    final results = <Patent>[];
+    final results = <TradingArea>[];
     for (final json in jsonList) {
       results.add(
-        Patent.from(
-          code: json.getString(key: _codeKey),
+        TradingArea.from(
+          code: json.getInt(key: _codeKey),
           name: json.getString(key: _nameKey),
+          remarks: json.getString(
+            key: 'remarks', // This is only set for the middle case.
+          ),
         ),
       );
     }

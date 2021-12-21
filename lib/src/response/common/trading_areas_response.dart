@@ -2,16 +2,18 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:collection/collection.dart';
 
+// Project imports:
 import 'package:resas/resas.dart';
 import 'package:resas/src/const/classification.dart';
-import 'package:resas/src/model/common/patent.dart';
+import 'package:resas/src/model/common/trading_area.dart';
 import 'package:resas/src/response/status.dart';
 
-class PatentsResponse extends ResasResponse {
-  /// Returns the new instance of [PatentsResponse] based on arguments.
-  PatentsResponse.from({
+class TradingAreasResponse extends ResasResponse {
+  /// Returns the new instance of [TradingAreasResponse] based on arguments.
+  TradingAreasResponse.from({
     required int statusCode,
     required String reasonPhrase,
     required Map<String, String> headers,
@@ -30,19 +32,19 @@ class PatentsResponse extends ResasResponse {
   /// The classification
   final Classification classification;
 
-  /// The patents
-  final List<Patent> results;
+  /// The trading areas
+  final List<TradingArea> results;
 
   @override
   String toString() =>
-      'PatentsResponse(classification: $classification, results: $results)';
+      'TradingAreasResponse(classification: $classification, results: $results)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
 
-    return other is PatentsResponse &&
+    return other is TradingAreasResponse &&
         other.classification == classification &&
         listEquals(other.results, results);
   }

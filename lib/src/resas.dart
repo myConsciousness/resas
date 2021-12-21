@@ -11,6 +11,7 @@ import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/old_cities_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
+import 'package:resas/src/response/common/trading_areas_response.dart';
 
 /// This abstract class provides feature for easy access to the RESAS API.
 abstract class Resas {
@@ -58,5 +59,11 @@ abstract class Resas {
 
   Future<CustomHousesResponse> customHouses({
     required int prefectureCode,
+  });
+
+  Future<TradingAreasResponse> broadTradingAreas();
+
+  Future<TradingAreasResponse> middleTradingAreas({
+    required int parentCode,
   });
 }

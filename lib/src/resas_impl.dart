@@ -18,6 +18,7 @@ import 'package:resas/src/request/common/patentee_locations_request.dart';
 import 'package:resas/src/request/common/patents_request.dart';
 import 'package:resas/src/request/common/prefectures_request.dart';
 import 'package:resas/src/request/common/trading_areas_request.dart';
+import 'package:resas/src/request/common/trading_items_request.dart';
 import 'package:resas/src/response/common/agriculture_departments_response.dart';
 import 'package:resas/src/response/common/custom_houses_response.dart';
 import 'package:resas/src/response/common/industries_response.dart';
@@ -25,6 +26,7 @@ import 'package:resas/src/response/common/jobs_response.dart';
 import 'package:resas/src/response/common/patentee_locations_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/trading_areas_response.dart';
+import 'package:resas/src/response/common/trading_items_response.dart';
 
 /// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {
@@ -66,20 +68,20 @@ class ResasImpl implements Resas {
 
   @override
   Future<IndustriesResponse> middleIndustries({
-    required String parentCode,
+    required String broadParentCode,
   }) async =>
       await IndustriesRequest.from(
         classification: Classification.middle,
-        parentCode: parentCode,
+        parentCode: broadParentCode,
       ).send();
 
   @override
   Future<IndustriesResponse> narrowIndustries({
-    required String parentCode,
+    required String middleParentCode,
   }) async =>
       await IndustriesRequest.from(
         classification: Classification.narrow,
-        parentCode: parentCode,
+        parentCode: middleParentCode,
       ).send();
 
   @override
@@ -89,11 +91,11 @@ class ResasImpl implements Resas {
 
   @override
   Future<JobsResponse> middleJobs({
-    required String parentCode,
+    required String broadParentCode,
   }) async =>
       await JobsRequest.from(
         classification: Classification.middle,
-        parentCode: parentCode,
+        parentCode: broadParentCode,
       ).send();
 
   @override
@@ -103,11 +105,11 @@ class ResasImpl implements Resas {
 
   @override
   Future<PatentsResponse> middlePatents({
-    required String parentCode,
+    required String broadParentCode,
   }) async =>
       await PatentsRequest.from(
         classification: Classification.middle,
-        parentCode: parentCode,
+        parentCode: broadParentCode,
       ).send();
 
   @override
@@ -126,11 +128,11 @@ class ResasImpl implements Resas {
 
   @override
   Future<TradingAreasResponse> middleTradingAreas({
-    required int parentCode,
+    required int broadParentCode,
   }) async =>
       await TradingAreasRequest.from(
         classification: Classification.middle,
-        parentCode: parentCode,
+        parentCode: broadParentCode,
       ).send();
 
   @override
@@ -145,5 +147,31 @@ class ResasImpl implements Resas {
       await PatenteeLocationsRequest.from(
         prefectureCode: prefectureCode,
         cityCode: cityCode,
+      ).send();
+
+  @override
+  Future<TradingItemsResponse> broadTradingItems() async =>
+      TradingItemsRequest.from(
+        classification: Classification.broad,
+      ).send();
+
+  @override
+  Future<TradingItemsResponse> middleTradingItems({
+    required int broadParentCode,
+  }) async =>
+      TradingItemsRequest.from(
+        classification: Classification.middle,
+        broadParentCode: broadParentCode,
+      ).send();
+
+  @override
+  Future<TradingItemsResponse> narrowTradingItems({
+    required int broadParentCode,
+    required int middleParentCode,
+  }) async =>
+      TradingItemsRequest.from(
+        classification: Classification.narrow,
+        broadParentCode: broadParentCode,
+        middleParentCode: middleParentCode,
       ).send();
 }

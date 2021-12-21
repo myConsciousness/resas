@@ -48,6 +48,15 @@ enum Resource {
 
   /// Patentee locations
   patenteeLocations,
+
+  /// Broad trading items
+  broadTradingItems,
+
+  /// Middle trading items
+  middleTradingItems,
+
+  /// Narrow trading items
+  narrowTradingItems,
 }
 
 /// The extension of [Resource].
@@ -85,6 +94,12 @@ extension ResourceExt on Resource {
         return 'api/v1/regions/agricultureDepartments';
       case Resource.patenteeLocations:
         return 'api/v1/patents/locations';
+      case Resource.broadTradingItems:
+        return 'api/v1/tradeInfoItemTypes/broad';
+      case Resource.middleTradingItems:
+        return 'api/v1/tradeInfoItemTypes/middle';
+      case Resource.narrowTradingItems:
+        return 'api/v1/tradeInfoItemTypes/narrow';
     }
   }
 }

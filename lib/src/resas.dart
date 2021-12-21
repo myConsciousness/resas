@@ -15,6 +15,7 @@ import 'package:resas/src/response/common/patentee_locations_response.dart';
 import 'package:resas/src/response/common/patents_response.dart';
 import 'package:resas/src/response/common/prefectures_response.dart';
 import 'package:resas/src/response/common/trading_areas_response.dart';
+import 'package:resas/src/response/common/trading_items_response.dart';
 
 /// This abstract class provides feature for easy access to the RESAS API.
 abstract class Resas {
@@ -41,23 +42,23 @@ abstract class Resas {
   Future<IndustriesResponse> broadIndustries();
 
   Future<IndustriesResponse> middleIndustries({
-    required String parentCode,
+    required String broadParentCode,
   });
 
   Future<IndustriesResponse> narrowIndustries({
-    required String parentCode,
+    required String middleParentCode,
   });
 
   Future<JobsResponse> broadJobs();
 
   Future<JobsResponse> middleJobs({
-    required String parentCode,
+    required String broadParentCode,
   });
 
   Future<PatentsResponse> broadPatents();
 
   Future<PatentsResponse> middlePatents({
-    required String parentCode,
+    required String broadParentCode,
   });
 
   Future<CustomHousesResponse> customHouses({
@@ -67,7 +68,7 @@ abstract class Resas {
   Future<TradingAreasResponse> broadTradingAreas();
 
   Future<TradingAreasResponse> middleTradingAreas({
-    required int parentCode,
+    required int broadParentCode,
   });
 
   Future<AgricultureDepartmentsResponse> agricultureDepartments();
@@ -75,5 +76,16 @@ abstract class Resas {
   Future<PatenteeLocationsResponse> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
+  });
+
+  Future<TradingItemsResponse> broadTradingItems();
+
+  Future<TradingItemsResponse> middleTradingItems({
+    required int broadParentCode,
+  });
+
+  Future<TradingItemsResponse> narrowTradingItems({
+    required int broadParentCode,
+    required int middleParentCode,
   });
 }

@@ -2,8 +2,10 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Project imports:
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/const/city_type.dart';
 
 export 'package:resas/src/const/city_type.dart';

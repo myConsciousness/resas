@@ -1,4 +1,6 @@
-![logo](https://user-images.githubusercontent.com/13072231/148361660-e0f50529-9b20-4097-af70-4b1bd0909f29.png)
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/13072231/148361660-e0f50529-9b20-4097-af70-4b1bd0909f29.png" alt="logo">
+</div>
 
 **_A most easily usable RESAS API wrapper library in Dart!_**
 

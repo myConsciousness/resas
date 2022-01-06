@@ -1,4 +1,4 @@
-![resas-logo](https://user-images.githubusercontent.com/13072231/148020977-bb896bb3-a94f-49ba-896b-e388056b4bf1.png)
+![logo](https://user-images.githubusercontent.com/13072231/148361660-e0f50529-9b20-4097-af70-4b1bd0909f29.png)
 
 **_A most easily usable RESAS API wrapper library in Dart!_**
 

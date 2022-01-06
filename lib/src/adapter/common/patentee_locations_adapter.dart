@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -20,7 +20,7 @@ class PatenteeLocationsAdapter extends Adapter<PatenteeLocationsResponse> {
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   PatenteeLocationsResponse _buildResponse({
@@ -33,23 +33,17 @@ class PatenteeLocationsAdapter extends Adapter<PatenteeLocationsResponse> {
         headers: response.headers,
         message: json.getString(key: 'message'),
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<PatenteeLocation> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <PatenteeLocation>[];
-    for (final json in jsonList) {
-      results.add(
-        PatenteeLocation.from(
-          id: json.getInt(key: 'id'),
-          latitude: json.getDouble(key: 'latitude'),
-          longitude: json.getDouble(key: 'longitude'),
-        ),
-      );
-    }
+    jsonArray.forEach((json) {
+      results.add(PatenteeLocation.fromJson(json.toMap()));
+    });
 
     return results;
   }

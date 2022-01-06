@@ -3,44 +3,26 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:resas/src/const/city_type.dart';
 
 export 'package:resas/src/const/city_type.dart';
+
+part 'city.freezed.dart';
+part 'city.g.dart';
 
 /// This class represents the cities and towns of Japan.
 ///
 /// This class contains administrative [code] and [name] for Japanese cities, towns, and villages,
 /// as well as [type] for these cities, towns, and villages.
-class City {
+@freezed
+class City with _$City {
   /// Returns the new instance if [City] based on arguments.
-  City.from({
-    required this.code,
-    required this.name,
-    required this.type,
-  });
+  const factory City({
+    @JsonKey(name: 'cityCode') required String code,
+    @JsonKey(name: 'cityName') required String name,
+    @JsonKey(name: 'bigCityFlag') required CityType type,
+  }) = _City;
 
-  /// The code
-  final String code;
-
-  /// The name
-  final String name;
-
-  /// The city type
-  final CityType type;
-
-  @override
-  String toString() => 'City(code: $code, name: $name, type: $type)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is City &&
-        other.code == code &&
-        other.name == name &&
-        other.type == type;
-  }
-
-  @override
-  int get hashCode => code.hashCode ^ name.hashCode ^ type.hashCode;
+  factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 }

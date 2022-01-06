@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -26,7 +26,7 @@ class TradingAreasAdapter extends Adapter<TradingAreasResponse> {
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   String get _codeKey {
@@ -62,15 +62,15 @@ class TradingAreasAdapter extends Adapter<TradingAreasResponse> {
         message: json.getString(key: 'message'),
         classification: classification,
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<TradingArea> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <TradingArea>[];
-    for (final json in jsonList) {
+    jsonArray.forEach((json) {
       results.add(
         TradingArea.from(
           code: json.getInt(key: _codeKey),
@@ -80,7 +80,7 @@ class TradingAreasAdapter extends Adapter<TradingAreasResponse> {
           ),
         ),
       );
-    }
+    });
 
     return results;
   }

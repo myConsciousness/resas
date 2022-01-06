@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -20,7 +20,7 @@ class PrefectureAdapter extends Adapter<PrefecturesResponse> {
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   PrefecturesResponse _buildResponse({
@@ -33,22 +33,17 @@ class PrefectureAdapter extends Adapter<PrefecturesResponse> {
         headers: response.headers,
         message: json.getString(key: 'message'),
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<Prefecture> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <Prefecture>[];
-    for (final json in jsonList) {
-      results.add(
-        Prefecture.from(
-          code: json.getInt(key: 'prefCode'),
-          name: json.getString(key: 'prefName'),
-        ),
-      );
-    }
+    jsonArray.forEach((json) {
+      results.add(Prefecture.fromJson(json.toMap()));
+    });
 
     return results;
   }

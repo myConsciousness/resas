@@ -2,31 +2,19 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-class AgricultureDepartment {
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'agriculture_department.freezed.dart';
+part 'agriculture_department.g.dart';
+
+@freezed
+class AgricultureDepartment with _$AgricultureDepartment {
   /// Returns the new instance of [AgricultureDepartment] based on arguments.
-  AgricultureDepartment.from({
-    required this.code,
-    required this.name,
-  });
+  const factory AgricultureDepartment({
+    @JsonKey(name: 'sectionCode') required String code,
+    @JsonKey(name: 'sectionName') required String name,
+  }) = _AgricultureDepartment;
 
-  /// The code
-  final String code;
-
-  /// The name
-  final String name;
-
-  @override
-  String toString() => 'AgricultureDepartment(code: $code, name: $name)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is AgricultureDepartment &&
-        other.code == code &&
-        other.name == name;
-  }
-
-  @override
-  int get hashCode => code.hashCode ^ name.hashCode;
+  factory AgricultureDepartment.fromJson(Map<String, dynamic> json) =>
+      _$AgricultureDepartmentFromJson(json);
 }

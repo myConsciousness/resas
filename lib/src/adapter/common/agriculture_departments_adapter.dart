@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -21,7 +21,7 @@ class AgricultureDepartmentsAdapter
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   AgricultureDepartmentsResponse _buildResponse({
@@ -34,22 +34,17 @@ class AgricultureDepartmentsAdapter
         headers: response.headers,
         message: json.getString(key: 'message'),
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<AgricultureDepartment> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <AgricultureDepartment>[];
-    for (final json in jsonList) {
-      results.add(
-        AgricultureDepartment.from(
-          code: json.getString(key: 'sectionCode'),
-          name: json.getString(key: 'sectionName'),
-        ),
-      );
-    }
+    jsonArray.forEach((json) {
+      results.add(AgricultureDepartment.fromJson(json.toMap()));
+    });
 
     return results;
   }

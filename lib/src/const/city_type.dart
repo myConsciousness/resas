@@ -2,22 +2,25 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 /// The enum that represents city type.
 enum CityType {
   /// The municipalities (市区町村)
+  @JsonValue('0')
   municipalities,
 
   /// The wards of ordinance-designated cities (政令指定都市の区)
+  @JsonValue('1')
   wardsOfOrdinanceDesignatedCities,
 
   /// The cities of ordinance-designated cities (政令指定都市の市)
+  @JsonValue('2')
   citiesOfOrdinanceDesignatedCities,
 
   /// The special wards of Tokyo (東京23区)
+  @JsonValue('3')
   specialWardsOfTokyo,
-
-  /// Unknown type
-  unknown,
 }
 
 extension CityTypeFeature on CityType {
@@ -32,8 +35,6 @@ extension CityTypeFeature on CityType {
         return 2;
       case CityType.specialWardsOfTokyo:
         return 3;
-      case CityType.unknown:
-        return -1;
     }
   }
 
@@ -47,6 +48,6 @@ extension CityTypeFeature on CityType {
       }
     }
 
-    return CityType.unknown;
+    throw UnimplementedError();
   }
 }

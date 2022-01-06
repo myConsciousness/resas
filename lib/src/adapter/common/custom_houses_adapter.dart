@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -20,7 +20,7 @@ class CustomHousesAdapter extends Adapter<CustomHousesResponse> {
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   CustomHousesResponse _buildResponse({
@@ -33,22 +33,17 @@ class CustomHousesAdapter extends Adapter<CustomHousesResponse> {
         headers: response.headers,
         message: json.getString(key: 'message'),
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<CustomHouse> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <CustomHouse>[];
-    for (final json in jsonList) {
-      results.add(
-        CustomHouse.from(
-          code: json.getInt(key: 'customHouseCode'),
-          name: json.getString(key: 'customHouseName'),
-        ),
-      );
-    }
+    jsonArray.forEach((json) {
+      results.add(CustomHouse.fromJson(json.toMap()));
+    });
 
     return results;
   }

@@ -4,7 +4,7 @@
 
 // Package imports:
 import 'package:http/http.dart';
-import 'package:json_pro/json_pro.dart';
+import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
@@ -20,7 +20,7 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
   }) =>
       _buildResponse(
         response: response,
-        json: Json.fromBytes(bytes: response.bodyBytes),
+        json: Json.from(response: response),
       );
 
   CitiesResponse _buildResponse({
@@ -33,25 +33,17 @@ class CitiesAdapter extends Adapter<CitiesResponse> {
         headers: response.headers,
         message: json.getString(key: 'message'),
         results: _buildResults(
-          jsonList: json.getJsonList(key: 'result'),
+          jsonArray: json.getArray(key: 'result'),
         ),
       );
 
   List<City> _buildResults({
-    required List<Json> jsonList,
+    required JsonArray jsonArray,
   }) {
     final results = <City>[];
-    for (final json in jsonList) {
-      results.add(
-        City.from(
-          code: json.getString(key: 'cityCode'),
-          name: json.getString(key: 'cityName'),
-          type: CityTypeFeature.toEnum(
-            code: int.parse(json.getString(key: 'bigCityFlag')),
-          ),
-        ),
-      );
-    }
+    jsonArray.forEach((json) {
+      results.add(City.fromJson(json.toMap()));
+    });
 
     return results;
   }

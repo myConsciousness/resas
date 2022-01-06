@@ -4,8 +4,6 @@
 
 **_A most easily usable RESAS API wrapper library in Dart!_**
 
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/myConsciousness/resas)
-
 [![pub package](https://img.shields.io/pub/v/resas.svg)](https://pub.dev/packages/resas)
 
 <!-- TOC -->

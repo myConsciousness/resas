@@ -1,5 +1,9 @@
 # Release Note
 
+## 0.2.0
+
+- Fixed structures and some minor features.
+
 ## 0.1.1
 
 - Fixed document.

@@ -23,7 +23,7 @@ class _$BroadIndustryTearOff {
   const _$BroadIndustryTearOff();
 
   _BroadIndustry call(
-      {@JsonKey(name: 'simCode') required String code,
+      {@JsonKey(name: 'sicCode') required String code,
       @JsonKey(name: 'sicName') required String name}) {
     return _BroadIndustry(
       code: code,
@@ -41,7 +41,7 @@ const $BroadIndustry = _$BroadIndustryTearOff();
 
 /// @nodoc
 mixin _$BroadIndustry {
-  @JsonKey(name: 'simCode')
+  @JsonKey(name: 'sicCode')
   String get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'sicName')
   String get name => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ abstract class $BroadIndustryCopyWith<$Res> {
           BroadIndustry value, $Res Function(BroadIndustry) then) =
       _$BroadIndustryCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'simCode') String code,
+      {@JsonKey(name: 'sicCode') String code,
       @JsonKey(name: 'sicName') String name});
 }
 
@@ -97,7 +97,7 @@ abstract class _$BroadIndustryCopyWith<$Res>
       __$BroadIndustryCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'simCode') String code,
+      {@JsonKey(name: 'sicCode') String code,
       @JsonKey(name: 'sicName') String name});
 }
 
@@ -134,14 +134,14 @@ class __$BroadIndustryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_BroadIndustry implements _BroadIndustry {
   const _$_BroadIndustry(
-      {@JsonKey(name: 'simCode') required this.code,
+      {@JsonKey(name: 'sicCode') required this.code,
       @JsonKey(name: 'sicName') required this.name});
 
   factory _$_BroadIndustry.fromJson(Map<String, dynamic> json) =>
       _$$_BroadIndustryFromJson(json);
 
   @override
-  @JsonKey(name: 'simCode')
+  @JsonKey(name: 'sicCode')
   final String code;
   @override
   @JsonKey(name: 'sicName')
@@ -180,14 +180,14 @@ class _$_BroadIndustry implements _BroadIndustry {
 
 abstract class _BroadIndustry implements BroadIndustry {
   const factory _BroadIndustry(
-      {@JsonKey(name: 'simCode') required String code,
+      {@JsonKey(name: 'sicCode') required String code,
       @JsonKey(name: 'sicName') required String name}) = _$_BroadIndustry;
 
   factory _BroadIndustry.fromJson(Map<String, dynamic> json) =
       _$_BroadIndustry.fromJson;
 
   @override
-  @JsonKey(name: 'simCode')
+  @JsonKey(name: 'sicCode')
   String get code;
   @override
   @JsonKey(name: 'sicName')

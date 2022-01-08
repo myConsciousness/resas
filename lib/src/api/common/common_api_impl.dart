@@ -6,6 +6,24 @@
 import 'package:resas/resas.dart';
 import 'package:resas/src/api/common/common_api.dart';
 import 'package:resas/src/const/classification.dart';
+import 'package:resas/src/model/common/agriculture_department.dart';
+import 'package:resas/src/model/common/broad_industry.dart';
+import 'package:resas/src/model/common/broad_job.dart';
+import 'package:resas/src/model/common/broad_patent.dart';
+import 'package:resas/src/model/common/broad_trading_area.dart';
+import 'package:resas/src/model/common/broad_trading_item.dart';
+import 'package:resas/src/model/common/city.dart';
+import 'package:resas/src/model/common/custom_house.dart';
+import 'package:resas/src/model/common/middle_industry.dart';
+import 'package:resas/src/model/common/middle_job.dart';
+import 'package:resas/src/model/common/middle_patent.dart';
+import 'package:resas/src/model/common/middle_trading_area.dart';
+import 'package:resas/src/model/common/middle_trading_item.dart';
+import 'package:resas/src/model/common/narrow_industry.dart';
+import 'package:resas/src/model/common/narrow_trading_item.dart';
+import 'package:resas/src/model/common/old_city.dart';
+import 'package:resas/src/model/common/patentee_location.dart';
+import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/request/common/agriculture_departments_request.dart';
 import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/custom_houses_request.dart';
@@ -29,17 +47,17 @@ class CommonApiImpl implements CommonApi {
   static final _singletonInstance = CommonApiImpl._internal();
 
   @override
-  Future<ResasResponse> prefectures() async =>
+  Future<ResasResponse<Prefecture>> prefectures() async =>
       PrefecturesRequest.newInstance().get();
 
   @override
-  Future<ResasResponse> cities({
+  Future<ResasResponse<City>> cities({
     required int prefectureCode,
   }) async =>
       CitiesRequest.from(prefectureCode: prefectureCode).get();
 
   @override
-  Future<ResasResponse> oldCities({
+  Future<ResasResponse<OldCity>> oldCities({
     required int prefectureCode,
     required String cityCode,
   }) async =>
@@ -49,58 +67,61 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse> broadIndustries() async => await IndustriesRequest.from(
+  Future<ResasResponse<BroadIndustry>> broadIndustries() async =>
+      await IndustriesRequest<BroadIndustry>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse> middleIndustries({
+  Future<ResasResponse<MiddleIndustry>> middleIndustries({
     required String broadParentCode,
   }) async =>
-      await IndustriesRequest.from(
+      await IndustriesRequest<MiddleIndustry>.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> narrowIndustries({
+  Future<ResasResponse<NarrowIndustry>> narrowIndustries({
     required String middleParentCode,
   }) async =>
-      await IndustriesRequest.from(
+      await IndustriesRequest<NarrowIndustry>.from(
         classification: Classification.narrow,
         parentCode: middleParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> broadJobs() async => await JobsRequest.from(
+  Future<ResasResponse<BroadJob>> broadJobs() async =>
+      await JobsRequest<BroadJob>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse> middleJobs({
+  Future<ResasResponse<MiddleJob>> middleJobs({
     required String broadParentCode,
   }) async =>
-      await JobsRequest.from(
+      await JobsRequest<MiddleJob>.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> broadPatents() async => await PatentsRequest.from(
+  Future<ResasResponse<BroadPatent>> broadPatents() async =>
+      await PatentsRequest<BroadPatent>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse> middlePatents({
+  Future<ResasResponse<MiddlePatent>> middlePatents({
     required String broadParentCode,
   }) async =>
-      await PatentsRequest.from(
+      await PatentsRequest<MiddlePatent>.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> customHouses({
+  Future<ResasResponse<CustomHouse>> customHouses({
     required int prefectureCode,
   }) async =>
       CustomHousesRequest.from(
@@ -108,26 +129,26 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse> broadTradingAreas() async =>
-      await TradingAreasRequest.from(
+  Future<ResasResponse<BroadTradingArea>> broadTradingAreas() async =>
+      await TradingAreasRequest<BroadTradingArea>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse> middleTradingAreas({
+  Future<ResasResponse<MiddleTradingArea>> middleTradingAreas({
     required int broadParentCode,
   }) async =>
-      await TradingAreasRequest.from(
+      await TradingAreasRequest<MiddleTradingArea>.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> agricultureDepartments() async =>
+  Future<ResasResponse<AgricultureDepartment>> agricultureDepartments() async =>
       await AgricultureDepartmentsRequest.newInstance().get();
 
   @override
-  Future<ResasResponse> patenteeLocations({
+  Future<ResasResponse<PatenteeLocation>> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   }) async =>
@@ -137,25 +158,26 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse> broadTradingItems() async => TradingItemsRequest.from(
+  Future<ResasResponse<BroadTradingItem>> broadTradingItems() async =>
+      TradingItemsRequest<BroadTradingItem>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse> middleTradingItems({
+  Future<ResasResponse<MiddleTradingItem>> middleTradingItems({
     required int broadParentCode,
   }) async =>
-      TradingItemsRequest.from(
+      TradingItemsRequest<MiddleTradingItem>.from(
         classification: Classification.middle,
         broadParentCode: broadParentCode,
       ).get();
 
   @override
-  Future<ResasResponse> narrowTradingItems({
+  Future<ResasResponse<NarrowTradingItem>> narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   }) async =>
-      TradingItemsRequest.from(
+      TradingItemsRequest<NarrowTradingItem>.from(
         classification: Classification.narrow,
         broadParentCode: broadParentCode,
         middleParentCode: middleParentCode,

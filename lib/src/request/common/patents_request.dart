@@ -9,9 +9,8 @@ import 'package:resas/src/model/common/broad_patent.dart';
 import 'package:resas/src/model/common/middle_patent.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class PatentsRequest extends Request<ResasResponse> {
+class PatentsRequest<T> extends Request<T> {
   /// Returns the new instance of [PatentsRequest] based on argument.
   PatentsRequest.from({
     required this.classification,
@@ -50,16 +49,7 @@ class PatentsRequest extends Request<ResasResponse> {
   }
 
   @override
-  Adapter get adapter {
-    switch (classification) {
-      case Classification.broad:
-        return Adapter<BroadPatent>.newInstance();
-      case Classification.middle:
-        return Adapter<MiddlePatent>.newInstance();
-      case Classification.narrow:
-        throw UnimplementedError();
-    }
-  }
+  Adapter<T> get adapter => Adapter<T>.newInstance();
 
   @override
   dynamic get builder {

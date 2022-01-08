@@ -10,9 +10,8 @@ import 'package:resas/src/model/common/middle_industry.dart';
 import 'package:resas/src/model/common/narrow_industry.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class IndustriesRequest extends Request<ResasResponse> {
+class IndustriesRequest<T> extends Request<T> {
   /// Returns the new instance of [IndustriesRequest] based on argument.
   IndustriesRequest.from({
     required this.classification,
@@ -52,16 +51,7 @@ class IndustriesRequest extends Request<ResasResponse> {
   }
 
   @override
-  Adapter get adapter {
-    switch (classification) {
-      case Classification.broad:
-        return Adapter<BroadIndustry>.newInstance();
-      case Classification.middle:
-        return Adapter<MiddleIndustry>.newInstance();
-      case Classification.narrow:
-        return Adapter<NarrowIndustry>.newInstance();
-    }
-  }
+  Adapter<T> get adapter => Adapter<T>.newInstance();
 
   @override
   dynamic get builder {

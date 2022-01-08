@@ -7,9 +7,8 @@ import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/model/common/custom_house.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class CustomHousesRequest extends Request<ResasResponse> {
+class CustomHousesRequest extends Request<CustomHouse> {
   /// Returns the new instance of [CustomHousesRequest].
   CustomHousesRequest.from({
     required this.prefectureCode,
@@ -25,7 +24,7 @@ class CustomHousesRequest extends Request<ResasResponse> {
   Map<String, String> get queryParameters => {'prefCode': '$prefectureCode'};
 
   @override
-  Adapter get adapter => Adapter<CustomHouse>.newInstance();
+  Adapter<CustomHouse> get adapter => Adapter<CustomHouse>.newInstance();
 
   @override
   dynamic get builder => CustomHouse.fromJson;

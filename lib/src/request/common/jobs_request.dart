@@ -9,9 +9,8 @@ import 'package:resas/src/model/common/broad_job.dart';
 import 'package:resas/src/model/common/middle_job.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class JobsRequest extends Request<ResasResponse> {
+class JobsRequest<T> extends Request<T> {
   /// Returns the new instance of [JobsRequest] based on argument.
   JobsRequest.from({
     required this.classification,
@@ -50,16 +49,7 @@ class JobsRequest extends Request<ResasResponse> {
   }
 
   @override
-  Adapter get adapter {
-    switch (classification) {
-      case Classification.broad:
-        return Adapter<BroadJob>.newInstance();
-      case Classification.middle:
-        return Adapter<MiddleJob>.newInstance();
-      case Classification.narrow:
-        throw UnimplementedError();
-    }
-  }
+  Adapter<T> get adapter => Adapter<T>.newInstance();
 
   @override
   dynamic get builder {

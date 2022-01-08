@@ -7,9 +7,8 @@ import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/model/common/old_city.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class OldCitiesRequest extends Request<ResasResponse> {
+class OldCitiesRequest extends Request<OldCity> {
   /// Returns the new instance of [OldCitiesRequest].
   OldCitiesRequest.from({
     required this.prefectureCode,
@@ -32,7 +31,7 @@ class OldCitiesRequest extends Request<ResasResponse> {
       };
 
   @override
-  Adapter get adapter => Adapter<OldCity>.newInstance();
+  Adapter<OldCity> get adapter => Adapter<OldCity>.newInstance();
 
   @override
   dynamic get builder => OldCity.fromJson;

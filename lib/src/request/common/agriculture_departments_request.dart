@@ -7,9 +7,8 @@ import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/model/common/agriculture_department.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class AgricultureDepartmentsRequest extends Request<ResasResponse> {
+class AgricultureDepartmentsRequest extends Request<AgricultureDepartment> {
   /// Returns the new instance of [AgricultureDepartmentsRequest].
   AgricultureDepartmentsRequest.newInstance();
 
@@ -17,7 +16,8 @@ class AgricultureDepartmentsRequest extends Request<ResasResponse> {
   Resource get resource => Resource.agricultureDepartments;
 
   @override
-  Adapter get adapter => Adapter<AgricultureDepartment>.newInstance();
+  Adapter<AgricultureDepartment> get adapter =>
+      Adapter<AgricultureDepartment>.newInstance();
 
   @override
   dynamic get builder => AgricultureDepartment.fromJson;

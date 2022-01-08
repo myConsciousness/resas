@@ -5,6 +5,8 @@
 // Package imports:
 import 'package:http/http.dart' as http;
 import 'package:json_response/json_response.dart';
+
+// Project imports:
 import 'package:resas/resas.dart';
 
 /// This is an abstract class that provides a function
@@ -23,7 +25,7 @@ class Adapter<T> {
 
   /// Converts the [response] given as an argument into an entity object
   /// corresponding to each RESAS API and returns it.
-  ResasResponse convert({
+  ResasResponse<T> convert({
     required http.Response response,
     required T Function(Map<String, dynamic>) builder,
   }) =>
@@ -33,7 +35,7 @@ class Adapter<T> {
         builder: builder,
       );
 
-  ResasResponse _buildResponse({
+  ResasResponse<T> _buildResponse({
     required http.Response response,
     required Json json,
     required T Function(Map<String, dynamic>) builder,

@@ -8,12 +8,12 @@ part of 'broad_industry.dart';
 
 _$_BroadIndustry _$$_BroadIndustryFromJson(Map<String, dynamic> json) =>
     _$_BroadIndustry(
-      code: json['simCode'] as String,
+      code: json['sicCode'] as String,
       name: json['sicName'] as String,
     );
 
 Map<String, dynamic> _$$_BroadIndustryToJson(_$_BroadIndustry instance) =>
     <String, dynamic>{
-      'simCode': instance.code,
+      'sicCode': instance.code,
       'sicName': instance.name,
     };

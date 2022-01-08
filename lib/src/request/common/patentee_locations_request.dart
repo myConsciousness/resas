@@ -7,9 +7,8 @@ import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class PatenteeLocationsRequest extends Request<ResasResponse> {
+class PatenteeLocationsRequest extends Request<PatenteeLocation> {
   /// Returns the new instance of [PatenteeLocationsRequest].
   PatenteeLocationsRequest.from({
     required this.prefectureCode,
@@ -32,7 +31,8 @@ class PatenteeLocationsRequest extends Request<ResasResponse> {
       };
 
   @override
-  Adapter get adapter => Adapter<PatenteeLocation>.newInstance();
+  Adapter<PatenteeLocation> get adapter =>
+      Adapter<PatenteeLocation>.newInstance();
 
   @override
   dynamic get builder => PatenteeLocation.fromJson;

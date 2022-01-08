@@ -2,6 +2,7 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'middle_job.freezed.dart';

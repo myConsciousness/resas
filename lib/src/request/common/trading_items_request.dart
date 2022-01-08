@@ -10,9 +10,8 @@ import 'package:resas/src/model/common/middle_trading_item.dart';
 import 'package:resas/src/model/common/narrow_trading_item.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/resas_response.dart';
 
-class TradingItemsRequest extends Request<ResasResponse> {
+class TradingItemsRequest<T> extends Request<T> {
   /// Returns the new instance of [TradingItemsRequest] based on argument.
   TradingItemsRequest.from({
     required this.classification,
@@ -60,16 +59,7 @@ class TradingItemsRequest extends Request<ResasResponse> {
   }
 
   @override
-  Adapter get adapter {
-    switch (classification) {
-      case Classification.broad:
-        return Adapter<BroadTradingItem>.newInstance();
-      case Classification.middle:
-        return Adapter<MiddleTradingItem>.newInstance();
-      case Classification.narrow:
-        return Adapter<NarrowTradingItem>.newInstance();
-    }
-  }
+  Adapter<T> get adapter => Adapter<T>.newInstance();
 
   @override
   dynamic get builder {

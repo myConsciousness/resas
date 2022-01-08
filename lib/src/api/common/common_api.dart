@@ -4,71 +4,89 @@
 
 // Project imports:
 import 'package:resas/src/api/common/common_api_impl.dart';
+import 'package:resas/src/model/common/agriculture_department.dart';
+import 'package:resas/src/model/common/broad_industry.dart';
+import 'package:resas/src/model/common/broad_job.dart';
+import 'package:resas/src/model/common/broad_patent.dart';
+import 'package:resas/src/model/common/broad_trading_area.dart';
+import 'package:resas/src/model/common/broad_trading_item.dart';
+import 'package:resas/src/model/common/city.dart';
+import 'package:resas/src/model/common/custom_house.dart';
+import 'package:resas/src/model/common/middle_industry.dart';
+import 'package:resas/src/model/common/middle_job.dart';
+import 'package:resas/src/model/common/middle_patent.dart';
+import 'package:resas/src/model/common/middle_trading_area.dart';
+import 'package:resas/src/model/common/middle_trading_item.dart';
+import 'package:resas/src/model/common/narrow_industry.dart';
+import 'package:resas/src/model/common/narrow_trading_item.dart';
+import 'package:resas/src/model/common/old_city.dart';
+import 'package:resas/src/model/common/patentee_location.dart';
+import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/response/resas_response.dart';
 
 abstract class CommonApi {
   static CommonApi get instance => CommonApiImpl.instance;
 
   /// Returns the list of prefectures in Japan.
-  Future<ResasResponse> prefectures();
+  Future<ResasResponse<Prefecture>> prefectures();
 
   /// Returns the list of cities in Japan linked to [prefectureCode].
-  Future<ResasResponse> cities({
+  Future<ResasResponse<City>> cities({
     required int prefectureCode,
   });
 
   /// Returns the list of old cities in Japan linked to [prefectureCode] and [cityCode].
-  Future<ResasResponse> oldCities({
+  Future<ResasResponse<OldCity>> oldCities({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<ResasResponse> broadIndustries();
+  Future<ResasResponse<BroadIndustry>> broadIndustries();
 
-  Future<ResasResponse> middleIndustries({
+  Future<ResasResponse<MiddleIndustry>> middleIndustries({
     required String broadParentCode,
   });
 
-  Future<ResasResponse> narrowIndustries({
+  Future<ResasResponse<NarrowIndustry>> narrowIndustries({
     required String middleParentCode,
   });
 
-  Future<ResasResponse> broadJobs();
+  Future<ResasResponse<BroadJob>> broadJobs();
 
-  Future<ResasResponse> middleJobs({
+  Future<ResasResponse<MiddleJob>> middleJobs({
     required String broadParentCode,
   });
 
-  Future<ResasResponse> broadPatents();
+  Future<ResasResponse<BroadPatent>> broadPatents();
 
-  Future<ResasResponse> middlePatents({
+  Future<ResasResponse<MiddlePatent>> middlePatents({
     required String broadParentCode,
   });
 
-  Future<ResasResponse> customHouses({
+  Future<ResasResponse<CustomHouse>> customHouses({
     required int prefectureCode,
   });
 
-  Future<ResasResponse> broadTradingAreas();
+  Future<ResasResponse<BroadTradingArea>> broadTradingAreas();
 
-  Future<ResasResponse> middleTradingAreas({
+  Future<ResasResponse<MiddleTradingArea>> middleTradingAreas({
     required int broadParentCode,
   });
 
-  Future<ResasResponse> agricultureDepartments();
+  Future<ResasResponse<AgricultureDepartment>> agricultureDepartments();
 
-  Future<ResasResponse> patenteeLocations({
+  Future<ResasResponse<PatenteeLocation>> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<ResasResponse> broadTradingItems();
+  Future<ResasResponse<BroadTradingItem>> broadTradingItems();
 
-  Future<ResasResponse> middleTradingItems({
+  Future<ResasResponse<MiddleTradingItem>> middleTradingItems({
     required int broadParentCode,
   });
 
-  Future<ResasResponse> narrowTradingItems({
+  Future<ResasResponse<NarrowTradingItem>> narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   });

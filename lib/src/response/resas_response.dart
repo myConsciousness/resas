@@ -2,9 +2,10 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Project imports:
+// Package imports:
 import 'package:collection/collection.dart';
 
+// Project imports:
 import 'package:resas/src/response/response.dart';
 import 'package:resas/src/response/status.dart';
 

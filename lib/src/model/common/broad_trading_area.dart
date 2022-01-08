@@ -12,7 +12,7 @@ part 'broad_trading_area.g.dart';
 class BroadTradingArea with _$BroadTradingArea {
   /// Returns the new instance of [BroadTradingArea] based on arguments.
   const factory BroadTradingArea({
-    @JsonKey(name: 'regionCode') required String code,
+    @JsonKey(name: 'regionCode') required int code,
     @JsonKey(name: 'regionName') required String name,
   }) = _BroadTradingArea;
 

@@ -23,7 +23,7 @@ class _$BroadTradingItemTearOff {
   const _$BroadTradingItemTearOff();
 
   _BroadTradingItem call(
-      {@JsonKey(name: 'itemCode1') required String code,
+      {@JsonKey(name: 'itemCode1') required int code,
       @JsonKey(name: 'itemName1') required String name}) {
     return _BroadTradingItem(
       code: code,
@@ -42,7 +42,7 @@ const $BroadTradingItem = _$BroadTradingItemTearOff();
 /// @nodoc
 mixin _$BroadTradingItem {
   @JsonKey(name: 'itemCode1')
-  String get code => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemName1')
   String get name => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $BroadTradingItemCopyWith<$Res> {
           BroadTradingItem value, $Res Function(BroadTradingItem) then) =
       _$BroadTradingItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'itemCode1') String code,
+      {@JsonKey(name: 'itemCode1') int code,
       @JsonKey(name: 'itemName1') String name});
 }
 
@@ -80,7 +80,7 @@ class _$BroadTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$BroadTradingItemCopyWith<$Res>
       __$BroadTradingItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'itemCode1') String code,
+      {@JsonKey(name: 'itemCode1') int code,
       @JsonKey(name: 'itemName1') String name});
 }
 
@@ -121,7 +121,7 @@ class __$BroadTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ class _$_BroadTradingItem implements _BroadTradingItem {
 
   @override
   @JsonKey(name: 'itemCode1')
-  final String code;
+  final int code;
   @override
   @JsonKey(name: 'itemName1')
   final String name;
@@ -180,7 +180,7 @@ class _$_BroadTradingItem implements _BroadTradingItem {
 
 abstract class _BroadTradingItem implements BroadTradingItem {
   const factory _BroadTradingItem(
-      {@JsonKey(name: 'itemCode1') required String code,
+      {@JsonKey(name: 'itemCode1') required int code,
       @JsonKey(name: 'itemName1') required String name}) = _$_BroadTradingItem;
 
   factory _BroadTradingItem.fromJson(Map<String, dynamic> json) =
@@ -188,7 +188,7 @@ abstract class _BroadTradingItem implements BroadTradingItem {
 
   @override
   @JsonKey(name: 'itemCode1')
-  String get code;
+  int get code;
   @override
   @JsonKey(name: 'itemName1')
   String get name;

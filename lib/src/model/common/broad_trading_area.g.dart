@@ -8,7 +8,7 @@ part of 'broad_trading_area.dart';
 
 _$_BroadTradingArea _$$_BroadTradingAreaFromJson(Map<String, dynamic> json) =>
     _$_BroadTradingArea(
-      code: json['regionCode'] as String,
+      code: json['regionCode'] as int,
       name: json['regionName'] as String,
     );
 

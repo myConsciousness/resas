@@ -23,7 +23,7 @@ class _$MiddleTradingItemTearOff {
   const _$MiddleTradingItemTearOff();
 
   _MiddleTradingItem call(
-      {@JsonKey(name: 'itemCode2') required String code,
+      {@JsonKey(name: 'itemCode2') required int code,
       @JsonKey(name: 'itemName2') required String name}) {
     return _MiddleTradingItem(
       code: code,
@@ -42,7 +42,7 @@ const $MiddleTradingItem = _$MiddleTradingItemTearOff();
 /// @nodoc
 mixin _$MiddleTradingItem {
   @JsonKey(name: 'itemCode2')
-  String get code => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemName2')
   String get name => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $MiddleTradingItemCopyWith<$Res> {
           MiddleTradingItem value, $Res Function(MiddleTradingItem) then) =
       _$MiddleTradingItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'itemCode2') String code,
+      {@JsonKey(name: 'itemCode2') int code,
       @JsonKey(name: 'itemName2') String name});
 }
 
@@ -80,7 +80,7 @@ class _$MiddleTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$MiddleTradingItemCopyWith<$Res>
       __$MiddleTradingItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'itemCode2') String code,
+      {@JsonKey(name: 'itemCode2') int code,
       @JsonKey(name: 'itemName2') String name});
 }
 
@@ -121,7 +121,7 @@ class __$MiddleTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ class _$_MiddleTradingItem implements _MiddleTradingItem {
 
   @override
   @JsonKey(name: 'itemCode2')
-  final String code;
+  final int code;
   @override
   @JsonKey(name: 'itemName2')
   final String name;
@@ -180,7 +180,7 @@ class _$_MiddleTradingItem implements _MiddleTradingItem {
 
 abstract class _MiddleTradingItem implements MiddleTradingItem {
   const factory _MiddleTradingItem(
-      {@JsonKey(name: 'itemCode2') required String code,
+      {@JsonKey(name: 'itemCode2') required int code,
       @JsonKey(name: 'itemName2') required String name}) = _$_MiddleTradingItem;
 
   factory _MiddleTradingItem.fromJson(Map<String, dynamic> json) =
@@ -188,7 +188,7 @@ abstract class _MiddleTradingItem implements MiddleTradingItem {
 
   @override
   @JsonKey(name: 'itemCode2')
-  String get code;
+  int get code;
   @override
   @JsonKey(name: 'itemName2')
   String get name;

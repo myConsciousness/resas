@@ -8,7 +8,7 @@ part of 'narrow_trading_item.dart';
 
 _$_NarrowTradingItem _$$_NarrowTradingItemFromJson(Map<String, dynamic> json) =>
     _$_NarrowTradingItem(
-      code: json['itemCode3'] as String,
+      code: json['itemCode3'] as int,
       name: json['itemName3'] as String,
     );
 

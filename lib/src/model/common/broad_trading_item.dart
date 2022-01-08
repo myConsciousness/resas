@@ -12,7 +12,7 @@ part 'broad_trading_item.g.dart';
 class BroadTradingItem with _$BroadTradingItem {
   /// Returns the new instance of [BroadTradingItem] based on arguments.
   const factory BroadTradingItem({
-    @JsonKey(name: 'itemCode1') required String code,
+    @JsonKey(name: 'itemCode1') required int code,
     @JsonKey(name: 'itemName1') required String name,
   }) = _BroadTradingItem;
 

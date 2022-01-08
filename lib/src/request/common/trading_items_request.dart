@@ -36,7 +36,7 @@ class TradingItemsRequest<T> extends Request<T> {
       case Classification.middle:
         return Resource.middleTradingItems;
       case Classification.narrow:
-        throw UnimplementedError();
+        return Resource.narrowTradingItems;
     }
   }
 

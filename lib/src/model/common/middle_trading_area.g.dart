@@ -8,7 +8,7 @@ part of 'middle_trading_area.dart';
 
 _$_MiddleTradingArea _$$_MiddleTradingAreaFromJson(Map<String, dynamic> json) =>
     _$_MiddleTradingArea(
-      code: json['countryCode'] as String,
+      code: json['countryCode'] as int,
       name: json['countryName'] as String,
       remarks: json['remarks'] as String,
     );

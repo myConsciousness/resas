@@ -23,7 +23,7 @@ class _$BroadTradingAreaTearOff {
   const _$BroadTradingAreaTearOff();
 
   _BroadTradingArea call(
-      {@JsonKey(name: 'regionCode') required String code,
+      {@JsonKey(name: 'regionCode') required int code,
       @JsonKey(name: 'regionName') required String name}) {
     return _BroadTradingArea(
       code: code,
@@ -42,7 +42,7 @@ const $BroadTradingArea = _$BroadTradingAreaTearOff();
 /// @nodoc
 mixin _$BroadTradingArea {
   @JsonKey(name: 'regionCode')
-  String get code => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'regionName')
   String get name => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $BroadTradingAreaCopyWith<$Res> {
           BroadTradingArea value, $Res Function(BroadTradingArea) then) =
       _$BroadTradingAreaCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'regionCode') String code,
+      {@JsonKey(name: 'regionCode') int code,
       @JsonKey(name: 'regionName') String name});
 }
 
@@ -80,7 +80,7 @@ class _$BroadTradingAreaCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$BroadTradingAreaCopyWith<$Res>
       __$BroadTradingAreaCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'regionCode') String code,
+      {@JsonKey(name: 'regionCode') int code,
       @JsonKey(name: 'regionName') String name});
 }
 
@@ -121,7 +121,7 @@ class __$BroadTradingAreaCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ class _$_BroadTradingArea implements _BroadTradingArea {
 
   @override
   @JsonKey(name: 'regionCode')
-  final String code;
+  final int code;
   @override
   @JsonKey(name: 'regionName')
   final String name;
@@ -180,7 +180,7 @@ class _$_BroadTradingArea implements _BroadTradingArea {
 
 abstract class _BroadTradingArea implements BroadTradingArea {
   const factory _BroadTradingArea(
-      {@JsonKey(name: 'regionCode') required String code,
+      {@JsonKey(name: 'regionCode') required int code,
       @JsonKey(name: 'regionName') required String name}) = _$_BroadTradingArea;
 
   factory _BroadTradingArea.fromJson(Map<String, dynamic> json) =
@@ -188,7 +188,7 @@ abstract class _BroadTradingArea implements BroadTradingArea {
 
   @override
   @JsonKey(name: 'regionCode')
-  String get code;
+  int get code;
   @override
   @JsonKey(name: 'regionName')
   String get name;

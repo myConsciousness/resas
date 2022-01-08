@@ -23,7 +23,7 @@ class _$MiddleTradingAreaTearOff {
   const _$MiddleTradingAreaTearOff();
 
   _MiddleTradingArea call(
-      {@JsonKey(name: 'countryCode') required String code,
+      {@JsonKey(name: 'countryCode') required int code,
       @JsonKey(name: 'countryName') required String name,
       required String remarks}) {
     return _MiddleTradingArea(
@@ -44,7 +44,7 @@ const $MiddleTradingArea = _$MiddleTradingAreaTearOff();
 /// @nodoc
 mixin _$MiddleTradingArea {
   @JsonKey(name: 'countryCode')
-  String get code => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'countryName')
   String get name => throw _privateConstructorUsedError;
   String get remarks => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $MiddleTradingAreaCopyWith<$Res> {
           MiddleTradingArea value, $Res Function(MiddleTradingArea) then) =
       _$MiddleTradingAreaCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'countryCode') String code,
+      {@JsonKey(name: 'countryCode') int code,
       @JsonKey(name: 'countryName') String name,
       String remarks});
 }
@@ -85,7 +85,7 @@ class _$MiddleTradingAreaCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -106,7 +106,7 @@ abstract class _$MiddleTradingAreaCopyWith<$Res>
       __$MiddleTradingAreaCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'countryCode') String code,
+      {@JsonKey(name: 'countryCode') int code,
       @JsonKey(name: 'countryName') String name,
       String remarks});
 }
@@ -132,7 +132,7 @@ class __$MiddleTradingAreaCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -158,7 +158,7 @@ class _$_MiddleTradingArea implements _MiddleTradingArea {
 
   @override
   @JsonKey(name: 'countryCode')
-  final String code;
+  final int code;
   @override
   @JsonKey(name: 'countryName')
   final String name;
@@ -200,7 +200,7 @@ class _$_MiddleTradingArea implements _MiddleTradingArea {
 
 abstract class _MiddleTradingArea implements MiddleTradingArea {
   const factory _MiddleTradingArea(
-      {@JsonKey(name: 'countryCode') required String code,
+      {@JsonKey(name: 'countryCode') required int code,
       @JsonKey(name: 'countryName') required String name,
       required String remarks}) = _$_MiddleTradingArea;
 
@@ -209,7 +209,7 @@ abstract class _MiddleTradingArea implements MiddleTradingArea {
 
   @override
   @JsonKey(name: 'countryCode')
-  String get code;
+  int get code;
   @override
   @JsonKey(name: 'countryName')
   String get name;

@@ -12,7 +12,7 @@ part 'middle_trading_item.g.dart';
 class MiddleTradingItem with _$MiddleTradingItem {
   /// Returns the new instance of [MiddleTradingItem] based on arguments.
   const factory MiddleTradingItem({
-    @JsonKey(name: 'itemCode2') required String code,
+    @JsonKey(name: 'itemCode2') required int code,
     @JsonKey(name: 'itemName2') required String name,
   }) = _MiddleTradingItem;
 

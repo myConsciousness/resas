@@ -23,7 +23,7 @@ class _$NarrowTradingItemTearOff {
   const _$NarrowTradingItemTearOff();
 
   _NarrowTradingItem call(
-      {@JsonKey(name: 'itemCode3') required String code,
+      {@JsonKey(name: 'itemCode3') required int code,
       @JsonKey(name: 'itemName3') required String name}) {
     return _NarrowTradingItem(
       code: code,
@@ -42,7 +42,7 @@ const $NarrowTradingItem = _$NarrowTradingItemTearOff();
 /// @nodoc
 mixin _$NarrowTradingItem {
   @JsonKey(name: 'itemCode3')
-  String get code => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'itemName3')
   String get name => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $NarrowTradingItemCopyWith<$Res> {
           NarrowTradingItem value, $Res Function(NarrowTradingItem) then) =
       _$NarrowTradingItemCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'itemCode3') String code,
+      {@JsonKey(name: 'itemCode3') int code,
       @JsonKey(name: 'itemName3') String name});
 }
 
@@ -80,7 +80,7 @@ class _$NarrowTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$NarrowTradingItemCopyWith<$Res>
       __$NarrowTradingItemCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'itemCode3') String code,
+      {@JsonKey(name: 'itemCode3') int code,
       @JsonKey(name: 'itemName3') String name});
 }
 
@@ -121,7 +121,7 @@ class __$NarrowTradingItemCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ class _$_NarrowTradingItem implements _NarrowTradingItem {
 
   @override
   @JsonKey(name: 'itemCode3')
-  final String code;
+  final int code;
   @override
   @JsonKey(name: 'itemName3')
   final String name;
@@ -180,7 +180,7 @@ class _$_NarrowTradingItem implements _NarrowTradingItem {
 
 abstract class _NarrowTradingItem implements NarrowTradingItem {
   const factory _NarrowTradingItem(
-      {@JsonKey(name: 'itemCode3') required String code,
+      {@JsonKey(name: 'itemCode3') required int code,
       @JsonKey(name: 'itemName3') required String name}) = _$_NarrowTradingItem;
 
   factory _NarrowTradingItem.fromJson(Map<String, dynamic> json) =
@@ -188,7 +188,7 @@ abstract class _NarrowTradingItem implements NarrowTradingItem {
 
   @override
   @JsonKey(name: 'itemCode3')
-  String get code;
+  int get code;
   @override
   @JsonKey(name: 'itemName3')
   String get name;

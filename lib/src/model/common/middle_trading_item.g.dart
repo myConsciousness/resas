@@ -8,7 +8,7 @@ part of 'middle_trading_item.dart';
 
 _$_MiddleTradingItem _$$_MiddleTradingItemFromJson(Map<String, dynamic> json) =>
     _$_MiddleTradingItem(
-      code: json['itemCode2'] as String,
+      code: json['itemCode2'] as int,
       name: json['itemName2'] as String,
     );
 

@@ -12,7 +12,7 @@ part 'narrow_trading_item.g.dart';
 class NarrowTradingItem with _$NarrowTradingItem {
   /// Returns the new instance of [NarrowTradingItem] based on arguments.
   const factory NarrowTradingItem({
-    @JsonKey(name: 'itemCode3') required String code,
+    @JsonKey(name: 'itemCode3') required int code,
     @JsonKey(name: 'itemName3') required String name,
   }) = _NarrowTradingItem;
 

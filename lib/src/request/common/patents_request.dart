@@ -3,13 +3,15 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/patents_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification.dart';
+import 'package:resas/src/model/common/broad_patent.dart';
+import 'package:resas/src/model/common/middle_patent.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/patents_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class PatentsRequest extends Request<PatentsResponse> {
+class PatentsRequest extends Request<ResasResponse> {
   /// Returns the new instance of [PatentsRequest] based on argument.
   PatentsRequest.from({
     required this.classification,
@@ -23,15 +25,7 @@ class PatentsRequest extends Request<PatentsResponse> {
   final String? parentCode;
 
   @override
-  Future<PatentsResponse> send() async =>
-      PatentsAdapter.of(classification: classification).convert(
-        response: await super.get(
-          resource: _resource,
-          queryParameters: _queryParameters,
-        ),
-      );
-
-  Resource get _resource {
+  Resource get resource {
     switch (classification) {
       case Classification.broad:
         return Resource.broadPatents;
@@ -42,13 +36,38 @@ class PatentsRequest extends Request<PatentsResponse> {
     }
   }
 
-  Map<String, String> get _queryParameters {
+  @override
+  Map<String, String> get queryParameters {
     switch (classification) {
       case Classification.broad:
         return {};
       case Classification.middle:
         assert(parentCode != null);
         return {'tecCode': parentCode!};
+      case Classification.narrow:
+        throw UnimplementedError();
+    }
+  }
+
+  @override
+  Adapter get adapter {
+    switch (classification) {
+      case Classification.broad:
+        return Adapter<BroadPatent>.newInstance();
+      case Classification.middle:
+        return Adapter<MiddlePatent>.newInstance();
+      case Classification.narrow:
+        throw UnimplementedError();
+    }
+  }
+
+  @override
+  dynamic get builder {
+    switch (classification) {
+      case Classification.broad:
+        return BroadPatent.fromJson;
+      case Classification.middle:
+        return MiddlePatent.fromJson;
       case Classification.narrow:
         throw UnimplementedError();
     }

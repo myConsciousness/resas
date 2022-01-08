@@ -5,6 +5,7 @@
 // Package imports:
 import 'package:cache_storage/cache_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:resas/src/adapter/adapter.dart';
 
 // Project imports:
 import 'package:resas/src/endpoint.dart';
@@ -25,13 +26,6 @@ abstract class Request<R extends ResasResponse> {
   /// The url of endpoint
   static final _endpoint = Endpoint.resasPortal;
 
-  /// Sends a get request to the RESAS API.
-  ///
-  /// Also converts the response returned by the RESAS API
-  /// into an entity object corresponding to each RESAS API
-  /// and returns it.
-  Future<R> send();
-
   Uri _buildUri({
     required Resource resource,
     required Map<String, String> queryParameters,
@@ -43,17 +37,28 @@ abstract class Request<R extends ResasResponse> {
         queryParameters: queryParameters,
       );
 
-  Future<http.Response> get({
-    required Resource resource,
-    Map<String, String> queryParameters = const {},
-  }) async =>
-      await http.get(
-        _buildUri(
-          resource: resource,
-          queryParameters: queryParameters,
+  Future<ResasResponse> get() async => adapter.convert(
+        response: await http.get(
+          _buildUri(
+            resource: resource,
+            queryParameters: queryParameters,
+          ),
+          headers: {
+            'X-API-KEY': CacheStorage.open().match(key: 'RESAS_API_KEY'),
+          },
         ),
-        headers: {
-          'X-API-KEY': CacheStorage.open().match(key: 'RESAS_API_KEY'),
-        },
+        builder: builder,
       );
+
+  /// Returns the resource.
+  Resource get resource;
+
+  /// Returns the query parameters
+  Map<String, String> get queryParameters => {};
+
+  /// Returns the adapter.
+  Adapter get adapter;
+
+  /// Returns the model builder.
+  dynamic get builder;
 }

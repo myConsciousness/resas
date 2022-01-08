@@ -3,20 +3,22 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/prefectures_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/prefectures_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class PrefecturesRequest extends Request<PrefecturesResponse> {
+class PrefecturesRequest extends Request<ResasResponse> {
   /// Returns the new instance of [PrefecturesRequest].
   PrefecturesRequest.newInstance();
 
-  /// The response adapter
-  static final _adapter = PrefectureAdapter.newInstance();
+  @override
+  Resource get resource => Resource.prefectures;
 
   @override
-  Future<PrefecturesResponse> send() async => _adapter.convert(
-        response: await super.get(resource: Resource.prefectures),
-      );
+  Adapter get adapter => Adapter<Prefecture>.newInstance();
+
+  @override
+  dynamic get builder => Prefecture.fromJson;
 }

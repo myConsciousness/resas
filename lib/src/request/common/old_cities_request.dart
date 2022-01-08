@@ -3,12 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/old_cities_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/old_city.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/old_cities_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class OldCitiesRequest extends Request<OldCitiesResponse> {
+class OldCitiesRequest extends Request<ResasResponse> {
   /// Returns the new instance of [OldCitiesRequest].
   OldCitiesRequest.from({
     required this.prefectureCode,
@@ -21,17 +22,18 @@ class OldCitiesRequest extends Request<OldCitiesResponse> {
   /// The city code
   final String cityCode;
 
-  /// The response adapter
-  static final _adapter = OldCitiesAdapter.newInstance();
+  @override
+  Resource get resource => Resource.oldCities;
 
   @override
-  Future<OldCitiesResponse> send() async => _adapter.convert(
-        response: await super.get(
-          resource: Resource.oldCities,
-          queryParameters: {
-            'prefCode': '$prefectureCode',
-            'cityCode': cityCode,
-          },
-        ),
-      );
+  Map<String, String> get queryParameters => {
+        'prefCode': '$prefectureCode',
+        'cityCode': cityCode,
+      };
+
+  @override
+  Adapter get adapter => Adapter<OldCity>.newInstance();
+
+  @override
+  dynamic get builder => OldCity.fromJson;
 }

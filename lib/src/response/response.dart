@@ -18,7 +18,7 @@ import 'package:resas/src/response/status.dart';
 /// If you want to check the HTTP status and header information of the response
 /// after calling a method, you can refer to the entity object
 /// that inherits from this abstract class.
-abstract class Response {
+abstract class Response<T> {
   /// Returns the new instance of [Response] based on arguments.
   Response.from({
     required this.status,
@@ -30,6 +30,12 @@ abstract class Response {
 
   /// The http headers
   final Map<String, String> headers;
+
+  /// Returns the message.
+  String get message;
+
+  /// Returns the results.
+  List<T> get results;
 
   @override
   String toString() => 'Response(status: $status, headers: $headers)';

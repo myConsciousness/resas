@@ -3,12 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/patentee_locations_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/patentee_locations_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class PatenteeLocationsRequest extends Request<PatenteeLocationsResponse> {
+class PatenteeLocationsRequest extends Request<ResasResponse> {
   /// Returns the new instance of [PatenteeLocationsRequest].
   PatenteeLocationsRequest.from({
     required this.prefectureCode,
@@ -21,17 +22,18 @@ class PatenteeLocationsRequest extends Request<PatenteeLocationsResponse> {
   /// The city code
   final String cityCode;
 
-  /// The response adapter
-  static final _adapter = PatenteeLocationsAdapter.newInstance();
+  @override
+  Resource get resource => Resource.patenteeLocations;
 
   @override
-  Future<PatenteeLocationsResponse> send() async => _adapter.convert(
-        response: await super.get(
-          resource: Resource.patenteeLocations,
-          queryParameters: {
-            'prefCode': '$prefectureCode',
-            'cityCode': cityCode,
-          },
-        ),
-      );
+  Map<String, String> get queryParameters => {
+        'prefCode': '$prefectureCode',
+        'cityCode': cityCode,
+      };
+
+  @override
+  Adapter get adapter => Adapter<PatenteeLocation>.newInstance();
+
+  @override
+  dynamic get builder => PatenteeLocation.fromJson;
 }

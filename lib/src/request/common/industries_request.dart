@@ -3,13 +3,16 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/industries_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/classification.dart';
+import 'package:resas/src/model/common/broad_industry.dart';
+import 'package:resas/src/model/common/middle_industry.dart';
+import 'package:resas/src/model/common/narrow_industry.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/industries_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class IndustriesRequest extends Request<IndustriesResponse> {
+class IndustriesRequest extends Request<ResasResponse> {
   /// Returns the new instance of [IndustriesRequest] based on argument.
   IndustriesRequest.from({
     required this.classification,
@@ -23,15 +26,7 @@ class IndustriesRequest extends Request<IndustriesResponse> {
   final String? parentCode;
 
   @override
-  Future<IndustriesResponse> send() async =>
-      IndustriesAdapter.of(classification: classification).convert(
-        response: await super.get(
-          resource: _resource,
-          queryParameters: _queryParameters,
-        ),
-      );
-
-  Resource get _resource {
+  Resource get resource {
     switch (classification) {
       case Classification.broad:
         return Resource.broadIndustries;
@@ -42,7 +37,8 @@ class IndustriesRequest extends Request<IndustriesResponse> {
     }
   }
 
-  Map<String, String> get _queryParameters {
+  @override
+  Map<String, String> get queryParameters {
     switch (classification) {
       case Classification.broad:
         return {};
@@ -52,6 +48,30 @@ class IndustriesRequest extends Request<IndustriesResponse> {
       case Classification.narrow:
         assert(parentCode != null);
         return {'simcCode': parentCode!};
+    }
+  }
+
+  @override
+  Adapter get adapter {
+    switch (classification) {
+      case Classification.broad:
+        return Adapter<BroadIndustry>.newInstance();
+      case Classification.middle:
+        return Adapter<MiddleIndustry>.newInstance();
+      case Classification.narrow:
+        return Adapter<NarrowIndustry>.newInstance();
+    }
+  }
+
+  @override
+  dynamic get builder {
+    switch (classification) {
+      case Classification.broad:
+        return BroadIndustry.fromJson;
+      case Classification.middle:
+        return MiddleIndustry.fromJson;
+      case Classification.narrow:
+        return NarrowIndustry.fromJson;
     }
   }
 }

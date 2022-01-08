@@ -5,12 +5,8 @@
 import 'package:resas/resas.dart';
 
 void main() async {
-  // In order to use the RESAS API, you need an API key issued on the official website.
-  //
-  // Generate the API key from the following site and pass it to the constructor of the Resas class.
-  // https://opendata.resas-portal.go.jp/form.html
   final resas = Resas.connectWith(
-    key: 'PGtrRjH4EoGiN9muzHJL5JDxQKOsiVO24e1mxlv5',
+    key: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // ← Replace with your API key.
   );
 
   // Once the instance is created, you can easily access the API by simply calling the method.
@@ -29,9 +25,9 @@ void main() async {
   );
   print(citiesResponse);
 
-  // final oldCitiesResponse = await resas.common.oldCities(
-  //   prefectureCode: prefecturesResponse.results[0].code,
-  //   cityCode: citiesResponse.results[0].code,
-  // );
-  // print(oldCitiesResponse);
+  final oldCitiesResponse = await resas.common.oldCities(
+    prefectureCode: prefecturesResponse.results[0].code,
+    cityCode: citiesResponse.results[0].code,
+  );
+  print(oldCitiesResponse);
 }

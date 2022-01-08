@@ -4,81 +4,71 @@
 
 // Project imports:
 import 'package:resas/src/api/common/common_api_impl.dart';
-import 'package:resas/src/response/common/agriculture_departments_response.dart';
-import 'package:resas/src/response/common/cities_response.dart';
-import 'package:resas/src/response/common/custom_houses_response.dart';
-import 'package:resas/src/response/common/industries_response.dart';
-import 'package:resas/src/response/common/jobs_response.dart';
-import 'package:resas/src/response/common/old_cities_response.dart';
-import 'package:resas/src/response/common/patentee_locations_response.dart';
-import 'package:resas/src/response/common/patents_response.dart';
-import 'package:resas/src/response/common/prefectures_response.dart';
-import 'package:resas/src/response/common/trading_areas_response.dart';
-import 'package:resas/src/response/common/trading_items_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
 abstract class CommonApi {
   static CommonApi get instance => CommonApiImpl.instance;
 
   /// Returns the list of prefectures in Japan.
-  Future<PrefecturesResponse> prefectures();
+  Future<ResasResponse> prefectures();
 
   /// Returns the list of cities in Japan linked to [prefectureCode].
-  Future<CitiesResponse> cities({
+  Future<ResasResponse> cities({
     required int prefectureCode,
   });
 
   /// Returns the list of old cities in Japan linked to [prefectureCode] and [cityCode].
-  Future<OldCitiesResponse> oldCities({
+  Future<ResasResponse> oldCities({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<IndustriesResponse> broadIndustries();
+  Future<ResasResponse> broadIndustries();
 
-  Future<IndustriesResponse> middleIndustries({
+  Future<ResasResponse> middleIndustries({
     required String broadParentCode,
   });
 
-  Future<IndustriesResponse> narrowIndustries({
+  Future<ResasResponse> narrowIndustries({
     required String middleParentCode,
   });
 
-  Future<JobsResponse> broadJobs();
+  Future<ResasResponse> broadJobs();
 
-  Future<JobsResponse> middleJobs({
+  Future<ResasResponse> middleJobs({
     required String broadParentCode,
   });
 
-  Future<PatentsResponse> broadPatents();
+  Future<ResasResponse> broadPatents();
 
-  Future<PatentsResponse> middlePatents({
+  Future<ResasResponse> middlePatents({
     required String broadParentCode,
   });
 
-  Future<CustomHousesResponse> customHouses({
+  Future<ResasResponse> customHouses({
     required int prefectureCode,
   });
 
-  Future<TradingAreasResponse> broadTradingAreas();
+  Future<ResasResponse> broadTradingAreas();
 
-  Future<TradingAreasResponse> middleTradingAreas({
+  Future<ResasResponse> middleTradingAreas({
     required int broadParentCode,
   });
 
-  Future<AgricultureDepartmentsResponse> agricultureDepartments();
+  Future<ResasResponse> agricultureDepartments();
 
-  Future<PatenteeLocationsResponse> patenteeLocations({
+  Future<ResasResponse> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<TradingItemsResponse> broadTradingItems();
+  Future<ResasResponse> broadTradingItems();
 
-  Future<TradingItemsResponse> middleTradingItems({
+  Future<ResasResponse> middleTradingItems({
     required int broadParentCode,
   });
 
-  Future<TradingItemsResponse> narrowTradingItems({
+  Future<ResasResponse> narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   });

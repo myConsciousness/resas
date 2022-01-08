@@ -3,12 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/cities_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/city.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/cities_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class CitiesRequest extends Request<CitiesResponse> {
+class CitiesRequest extends Request<ResasResponse> {
   /// Returns the new instance of [CitiesRequest].
   CitiesRequest.from({
     required this.prefectureCode,
@@ -17,16 +18,15 @@ class CitiesRequest extends Request<CitiesResponse> {
   /// The prefecture code
   final int prefectureCode;
 
-  /// The response adapter
-  static final _adapter = CitiesAdapter.newInstance();
+  @override
+  Resource get resource => Resource.cities;
 
   @override
-  Future<CitiesResponse> send() async => _adapter.convert(
-        response: await super.get(
-          resource: Resource.cities,
-          queryParameters: {
-            'prefCode': '$prefectureCode',
-          },
-        ),
-      );
+  Map<String, String> get queryParameters => {'prefCode': '$prefectureCode'};
+
+  @override
+  Adapter get adapter => Adapter<City>.newInstance();
+
+  @override
+  dynamic get builder => City.fromJson;
 }

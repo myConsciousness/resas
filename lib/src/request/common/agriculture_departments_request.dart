@@ -3,23 +3,22 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/agriculture_departments_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/agriculture_department.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/agriculture_departments_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class AgricultureDepartmentsRequest
-    extends Request<AgricultureDepartmentsResponse> {
+class AgricultureDepartmentsRequest extends Request<ResasResponse> {
   /// Returns the new instance of [AgricultureDepartmentsRequest].
   AgricultureDepartmentsRequest.newInstance();
 
-  /// The response adapter
-  static final _adapter = AgricultureDepartmentsAdapter.newInstance();
+  @override
+  Resource get resource => Resource.agricultureDepartments;
 
   @override
-  Future<AgricultureDepartmentsResponse> send() async => _adapter.convert(
-        response: await super.get(
-          resource: Resource.agricultureDepartments,
-        ),
-      );
+  Adapter get adapter => Adapter<AgricultureDepartment>.newInstance();
+
+  @override
+  dynamic get builder => AgricultureDepartment.fromJson;
 }

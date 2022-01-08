@@ -5,6 +5,7 @@
 // Project imports:
 import 'package:resas/resas.dart';
 import 'package:resas/src/api/common/common_api.dart';
+import 'package:resas/src/const/classification.dart';
 import 'package:resas/src/request/common/agriculture_departments_request.dart';
 import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/custom_houses_request.dart';
@@ -28,131 +29,129 @@ class CommonApiImpl implements CommonApi {
   static final _singletonInstance = CommonApiImpl._internal();
 
   @override
-  Future<PrefecturesResponse> prefectures() async =>
-      PrefecturesRequest.newInstance().send();
+  Future<ResasResponse> prefectures() async =>
+      PrefecturesRequest.newInstance().get();
 
   @override
-  Future<CitiesResponse> cities({
+  Future<ResasResponse> cities({
     required int prefectureCode,
   }) async =>
-      CitiesRequest.from(prefectureCode: prefectureCode).send();
+      CitiesRequest.from(prefectureCode: prefectureCode).get();
 
   @override
-  Future<OldCitiesResponse> oldCities({
+  Future<ResasResponse> oldCities({
     required int prefectureCode,
     required String cityCode,
   }) async =>
       await OldCitiesRequest.from(
         prefectureCode: prefectureCode,
         cityCode: cityCode,
-      ).send();
+      ).get();
 
   @override
-  Future<IndustriesResponse> broadIndustries() async =>
-      await IndustriesRequest.from(
+  Future<ResasResponse> broadIndustries() async => await IndustriesRequest.from(
         classification: Classification.broad,
-      ).send();
+      ).get();
 
   @override
-  Future<IndustriesResponse> middleIndustries({
+  Future<ResasResponse> middleIndustries({
     required String broadParentCode,
   }) async =>
       await IndustriesRequest.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<IndustriesResponse> narrowIndustries({
+  Future<ResasResponse> narrowIndustries({
     required String middleParentCode,
   }) async =>
       await IndustriesRequest.from(
         classification: Classification.narrow,
         parentCode: middleParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<JobsResponse> broadJobs() async => await JobsRequest.from(
+  Future<ResasResponse> broadJobs() async => await JobsRequest.from(
         classification: Classification.broad,
-      ).send();
+      ).get();
 
   @override
-  Future<JobsResponse> middleJobs({
+  Future<ResasResponse> middleJobs({
     required String broadParentCode,
   }) async =>
       await JobsRequest.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<PatentsResponse> broadPatents() async => await PatentsRequest.from(
+  Future<ResasResponse> broadPatents() async => await PatentsRequest.from(
         classification: Classification.broad,
-      ).send();
+      ).get();
 
   @override
-  Future<PatentsResponse> middlePatents({
+  Future<ResasResponse> middlePatents({
     required String broadParentCode,
   }) async =>
       await PatentsRequest.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<CustomHousesResponse> customHouses({
+  Future<ResasResponse> customHouses({
     required int prefectureCode,
   }) async =>
       CustomHousesRequest.from(
         prefectureCode: prefectureCode,
-      ).send();
+      ).get();
 
   @override
-  Future<TradingAreasResponse> broadTradingAreas() async =>
+  Future<ResasResponse> broadTradingAreas() async =>
       await TradingAreasRequest.from(
         classification: Classification.broad,
-      ).send();
+      ).get();
 
   @override
-  Future<TradingAreasResponse> middleTradingAreas({
+  Future<ResasResponse> middleTradingAreas({
     required int broadParentCode,
   }) async =>
       await TradingAreasRequest.from(
         classification: Classification.middle,
         parentCode: broadParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<AgricultureDepartmentsResponse> agricultureDepartments() async =>
-      await AgricultureDepartmentsRequest.newInstance().send();
+  Future<ResasResponse> agricultureDepartments() async =>
+      await AgricultureDepartmentsRequest.newInstance().get();
 
   @override
-  Future<PatenteeLocationsResponse> patenteeLocations({
+  Future<ResasResponse> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   }) async =>
       await PatenteeLocationsRequest.from(
         prefectureCode: prefectureCode,
         cityCode: cityCode,
-      ).send();
+      ).get();
 
   @override
-  Future<TradingItemsResponse> broadTradingItems() async =>
-      TradingItemsRequest.from(
+  Future<ResasResponse> broadTradingItems() async => TradingItemsRequest.from(
         classification: Classification.broad,
-      ).send();
+      ).get();
 
   @override
-  Future<TradingItemsResponse> middleTradingItems({
+  Future<ResasResponse> middleTradingItems({
     required int broadParentCode,
   }) async =>
       TradingItemsRequest.from(
         classification: Classification.middle,
         broadParentCode: broadParentCode,
-      ).send();
+      ).get();
 
   @override
-  Future<TradingItemsResponse> narrowTradingItems({
+  Future<ResasResponse> narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   }) async =>
@@ -160,5 +159,5 @@ class CommonApiImpl implements CommonApi {
         classification: Classification.narrow,
         broadParentCode: broadParentCode,
         middleParentCode: middleParentCode,
-      ).send();
+      ).get();
 }

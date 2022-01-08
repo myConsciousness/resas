@@ -3,12 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/src/adapter/common/custom_houses_adapter.dart';
+import 'package:resas/src/adapter/adapter.dart';
+import 'package:resas/src/model/common/custom_house.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
-import 'package:resas/src/response/common/custom_houses_response.dart';
+import 'package:resas/src/response/resas_response.dart';
 
-class CustomHousesRequest extends Request<CustomHousesResponse> {
+class CustomHousesRequest extends Request<ResasResponse> {
   /// Returns the new instance of [CustomHousesRequest].
   CustomHousesRequest.from({
     required this.prefectureCode,
@@ -17,16 +18,15 @@ class CustomHousesRequest extends Request<CustomHousesResponse> {
   /// The prefecture code
   final int prefectureCode;
 
-  /// The response adapter
-  static final _adapter = CustomHousesAdapter.newInstance();
+  @override
+  Resource get resource => Resource.customHouses;
 
   @override
-  Future<CustomHousesResponse> send() async => _adapter.convert(
-        response: await super.get(
-          resource: Resource.customHouses,
-          queryParameters: {
-            'prefCode': '$prefectureCode',
-          },
-        ),
-      );
+  Map<String, String> get queryParameters => {'prefCode': '$prefectureCode'};
+
+  @override
+  Adapter get adapter => Adapter<CustomHouse>.newInstance();
+
+  @override
+  dynamic get builder => CustomHouse.fromJson;
 }

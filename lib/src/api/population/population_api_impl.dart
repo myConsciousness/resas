@@ -6,6 +6,7 @@
 import 'package:resas/src/api/population/population_api.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
+import 'package:resas/src/request/population/sum/sum_estimate_request.dart';
 import 'package:resas/src/request/population/sum/sum_per_year_request.dart';
 
 class PopulationApiImpl implements PopulationApi {
@@ -48,6 +49,16 @@ class PopulationApiImpl implements PopulationApi {
     required String cityCode,
   }) async =>
       await SumPerYearRequest.from(
+        prefectureCode: prefectureCode,
+        cityCode: cityCode,
+      ).get();
+
+  @override
+  sumEstimate({
+    required int prefectureCode,
+    required String cityCode,
+  }) async =>
+      await SumEstimateRequest.from(
         prefectureCode: prefectureCode,
         cityCode: cityCode,
       ).get();

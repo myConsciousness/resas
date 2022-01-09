@@ -66,6 +66,9 @@ enum Resource {
 
   /// Sum per year
   sumPerYear,
+
+  /// Sum estimate
+  sumEstimate,
 }
 
 /// The extension of [Resource].
@@ -115,6 +118,8 @@ extension ResourceExt on Resource {
         return 'api/v1/population/composition/pyramid';
       case Resource.sumPerYear:
         return 'api/v1/population/sum/perYear';
+      case Resource.sumEstimate:
+        return 'api/v1/population/sum/estimate';
     }
   }
 }

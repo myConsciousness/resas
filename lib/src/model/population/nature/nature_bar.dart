@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/population/nature/nature_bar_data.dart';
 
 part 'nature_bar.freezed.dart';

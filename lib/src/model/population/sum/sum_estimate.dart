@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/population/sum/sum_estimate_dataset.dart';
 
 part 'sum_estimate.freezed.dart';

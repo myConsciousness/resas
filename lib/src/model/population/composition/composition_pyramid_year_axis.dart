@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/population/composition/composition_pyramid_data.dart';
 
 part 'composition_pyramid_year_axis.freezed.dart';

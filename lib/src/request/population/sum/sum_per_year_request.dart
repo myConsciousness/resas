@@ -4,7 +4,7 @@
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/population/Sum/Sum_per_year.dart';
+import 'package:resas/src/model/population/sum/sum_per_year.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 

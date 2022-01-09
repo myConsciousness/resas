@@ -6,6 +6,7 @@
 import 'package:resas/src/api/population/population_api.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
+import 'package:resas/src/request/population/sum/sum_per_year_request.dart';
 
 class PopulationApiImpl implements PopulationApi {
   /// The internal constructor for singleton.
@@ -39,5 +40,15 @@ class PopulationApiImpl implements PopulationApi {
         cityCode: cityCode,
         yearLeft: yearLeft,
         yearRight: yearRight,
+      ).get();
+
+  @override
+  sumPerYear({
+    required int prefectureCode,
+    required String cityCode,
+  }) async =>
+      await SumPerYearRequest.from(
+        prefectureCode: prefectureCode,
+        cityCode: cityCode,
       ).get();
 }

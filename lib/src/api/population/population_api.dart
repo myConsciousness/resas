@@ -3,10 +3,12 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/resas.dart';
+
 import 'package:resas/src/api/population/population_api_impl.dart';
 import 'package:resas/src/model/population/composition/composition_per_year.dart';
 import 'package:resas/src/model/population/composition/composition_pyramid.dart';
+import 'package:resas/src/model/population/sum/sum_per_year.dart';
+import 'package:resas/src/response/resas_response.dart';
 
 abstract class PopulationApi {
   static PopulationApi get instance => PopulationApiImpl.instance;
@@ -21,5 +23,10 @@ abstract class PopulationApi {
     required String cityCode,
     required int yearLeft,
     required int yearRight,
+  });
+
+  Future<ResasResponse<SumPerYear>> sumPerYear({
+    required int prefectureCode,
+    required String cityCode,
   });
 }

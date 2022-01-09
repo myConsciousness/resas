@@ -58,7 +58,11 @@ enum Resource {
   /// Narrow trading items
   narrowTradingItems,
 
+  /// Composition per year
   compositionPerYear,
+
+  /// Composition pyramid
+  compositionPyramid,
 }
 
 /// The extension of [Resource].
@@ -104,6 +108,8 @@ extension ResourceExt on Resource {
         return 'api/v1/tradeInfoItemTypes/narrow';
       case Resource.compositionPerYear:
         return 'api/v1/population/composition/perYear';
+      case Resource.compositionPyramid:
+        return 'api/v1/population/composition/pyramid';
     }
   }
 }

@@ -72,6 +72,9 @@ enum Resource {
 
   /// Nature
   nature,
+
+  /// Society for area
+  societyForArea,
 }
 
 /// The extension of [Resource].
@@ -125,6 +128,8 @@ extension ResourceExt on Resource {
         return 'api/v1/population/sum/estimate';
       case Resource.nature:
         return 'api/v1/population/nature';
+      case Resource.societyForArea:
+        return 'api/v1/population/society/forArea';
     }
   }
 }

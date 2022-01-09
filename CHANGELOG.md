@@ -15,7 +15,7 @@
 - Added 人口区分メッシュ度数分布図 api/v1/population/mesh/chart
 - Added 将来人口区分メッシュ度数分布図 api/v1/population/futureMesh/chart
 
-- Also, now we have a stable and sustainable development platform, we are moving from `Beta` to `1.0`, which will provide a stable version.
+- Also, now it has a stable and sustainable development platform, it is moving from `Beta` to `1.0` which will provide a stable version.
 
 ## 0.2.0
 

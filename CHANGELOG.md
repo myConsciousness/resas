@@ -1,5 +1,22 @@
 # Release Note
 
+## 1.0.0
+
+- Added 人口構成 api/v1/population/composition/perYear
+- Added 人口ピラミッド api/v1/population/composition/pyramid
+- Added 人口増減率 api/v1/population/sum/perYear
+- Added 出生数・死亡数／転入数・転出数 api/v1/population/sum/estimate
+- Added 人口の自然増減 api/v1/population/nature
+- Added 地域ブロック別純移動数 api/v1/population/society/forArea
+- Added 年齢階級別純移動数 api/v1/population/society/forAgeClass
+- Added 年齢階級別純移動数の時系列分析 api/v1/population/society/forAgeClassLine
+- Added 就職者数・進学者数の推移 api/v1/employEducation/localjobAcademic/toTransition
+- Added 将来人口推計 api/v1/population/future/cities
+- Added 人口区分メッシュ度数分布図 api/v1/population/mesh/chart
+- Added 将来人口区分メッシュ度数分布図 api/v1/population/futureMesh/chart
+
+- Also, now we have a stable and sustainable development platform, we are moving from `Beta` to `1.0`, which will provide a stable version.
+
 ## 0.2.0
 
 - Fixed structures and some minor features.

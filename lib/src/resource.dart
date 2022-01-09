@@ -57,6 +57,8 @@ enum Resource {
 
   /// Narrow trading items
   narrowTradingItems,
+
+  compositionPerYear,
 }
 
 /// The extension of [Resource].
@@ -100,6 +102,8 @@ extension ResourceExt on Resource {
         return 'api/v1/tradeInfoItemTypes/middle';
       case Resource.narrowTradingItems:
         return 'api/v1/tradeInfoItemTypes/narrow';
+      case Resource.compositionPerYear:
+        return 'api/v1/population/composition/perYear';
     }
   }
 }

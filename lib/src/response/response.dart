@@ -34,8 +34,8 @@ abstract class Response<T> {
   /// Returns the message.
   String get message;
 
-  /// Returns the results.
-  List<T> get results;
+  /// Returns the result.
+  T get result;
 
   @override
   String toString() => 'Response(status: $status, headers: $headers)';

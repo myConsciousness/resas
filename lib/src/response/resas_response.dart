@@ -2,9 +2,6 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-// Package imports:
-import 'package:collection/collection.dart';
-
 // Project imports:
 import 'package:resas/src/response/response.dart';
 import 'package:resas/src/response/status.dart';
@@ -16,7 +13,7 @@ class ResasResponse<T> extends Response<T> {
     required String reasonPhrase,
     required Map<String, String> headers,
     required this.message,
-    required this.results,
+    required this.result,
   }) : super.from(
           status: Status.from(
             code: statusCode,
@@ -29,21 +26,20 @@ class ResasResponse<T> extends Response<T> {
   final String message;
 
   @override
-  final List<T> results;
+  final T result;
 
   @override
-  String toString() => 'ResasResponse(message: $message, results: $results)';
+  String toString() => 'ResasResponse(message: $message, result: $result)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    final listEquals = const DeepCollectionEquality().equals;
 
     return other is ResasResponse<T> &&
         other.message == message &&
-        listEquals(other.results, results);
+        other.result == result;
   }
 
   @override
-  int get hashCode => message.hashCode ^ results.hashCode;
+  int get hashCode => message.hashCode ^ result.hashCode;
 }

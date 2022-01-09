@@ -8,17 +8,18 @@ import 'package:resas/src/model/common/agriculture_department.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class AgricultureDepartmentsRequest extends Request<AgricultureDepartment> {
+class AgricultureDepartmentsRequest
+    extends Request<List<AgricultureDepartment>, AgricultureDepartment> {
   /// Returns the new instance of [AgricultureDepartmentsRequest].
   AgricultureDepartmentsRequest.newInstance();
 
   @override
-  Resource get resource => Resource.agricultureDepartments;
+  get resource => Resource.agricultureDepartments;
 
   @override
-  Adapter<AgricultureDepartment> get adapter =>
-      Adapter<AgricultureDepartment>.newInstance();
+  get adapter => Adapter<List<AgricultureDepartment>,
+      AgricultureDepartment>.ofMultipleResults();
 
   @override
-  dynamic get builder => AgricultureDepartment.fromJson;
+  get builder => AgricultureDepartment.fromJson;
 }

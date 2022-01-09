@@ -8,16 +8,16 @@ import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class PrefecturesRequest extends Request<Prefecture> {
+class PrefecturesRequest extends Request<List<Prefecture>, Prefecture> {
   /// Returns the new instance of [PrefecturesRequest].
   PrefecturesRequest.newInstance();
 
   @override
-  Resource get resource => Resource.prefectures;
+  get resource => Resource.prefectures;
 
   @override
-  Adapter<Prefecture> get adapter => Adapter<Prefecture>.newInstance();
+  get adapter => Adapter<List<Prefecture>, Prefecture>.ofMultipleResults();
 
   @override
-  dynamic get builder => Prefecture.fromJson;
+  get builder => Prefecture.fromJson;
 }

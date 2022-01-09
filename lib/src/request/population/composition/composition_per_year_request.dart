@@ -1,16 +1,17 @@
-// Copyright (c) 2021, Kato Shinya. All rights reserved.
+// Copyright (c) 2022, Kato Shinya. All rights reserved.
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-import 'package:resas/src/model/common/old_city.dart';
+import 'package:resas/src/model/population/composition/composition_per_year.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class OldCitiesRequest extends Request<List<OldCity>, OldCity> {
-  /// Returns the new instance of [OldCitiesRequest].
-  OldCitiesRequest.from({
+class CompositionPerYearRequest
+    extends Request<CompositionPerYear, CompositionPerYear> {
+  /// Returns the new instance of [CompositionPerYearRequest].
+  CompositionPerYearRequest.from({
     required this.prefectureCode,
     required this.cityCode,
   });
@@ -22,7 +23,7 @@ class OldCitiesRequest extends Request<List<OldCity>, OldCity> {
   final String cityCode;
 
   @override
-  get resource => Resource.oldCities;
+  get resource => Resource.compositionPerYear;
 
   @override
   get queryParameters => {
@@ -31,8 +32,9 @@ class OldCitiesRequest extends Request<List<OldCity>, OldCity> {
       };
 
   @override
-  get adapter => Adapter<List<OldCity>, OldCity>.ofMultipleResults();
+  get adapter =>
+      Adapter<CompositionPerYear, CompositionPerYear>.ofSingleResult();
 
   @override
-  get builder => OldCity.fromJson;
+  get builder => CompositionPerYear.fromJson;
 }

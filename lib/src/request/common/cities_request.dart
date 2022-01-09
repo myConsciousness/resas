@@ -8,7 +8,7 @@ import 'package:resas/src/model/common/city.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class CitiesRequest extends Request<City> {
+class CitiesRequest extends Request<List<City>, City> {
   /// Returns the new instance of [CitiesRequest].
   CitiesRequest.from({
     required this.prefectureCode,
@@ -18,14 +18,14 @@ class CitiesRequest extends Request<City> {
   final int prefectureCode;
 
   @override
-  Resource get resource => Resource.cities;
+  get resource => Resource.cities;
 
   @override
-  Map<String, String> get queryParameters => {'prefCode': '$prefectureCode'};
+  get queryParameters => {'prefCode': '$prefectureCode'};
 
   @override
-  Adapter<City> get adapter => Adapter<City>.newInstance();
+  get adapter => Adapter<List<City>, City>.ofMultipleResults();
 
   @override
-  dynamic get builder => City.fromJson;
+  get builder => City.fromJson;
 }

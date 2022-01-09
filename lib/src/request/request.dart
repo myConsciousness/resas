@@ -22,7 +22,7 @@ import 'package:resas/src/response/resas_response.dart';
 /// The generic of this abstract class should be the type
 /// returned by the [send] method implemented in the concrete class
 /// that inherits from this abstract class.
-abstract class Request<T> {
+abstract class Request<RESULT_TYPE, MODEL_TYPE> {
   /// The url of endpoint
   static final _endpoint = Endpoint.resasPortal;
 
@@ -37,7 +37,7 @@ abstract class Request<T> {
         queryParameters: queryParameters,
       );
 
-  Future<ResasResponse<T>> get() async => adapter.convert(
+  Future<ResasResponse<RESULT_TYPE>> get() async => adapter.convert(
         response: await http.get(
           _buildUri(
             resource: resource,
@@ -57,7 +57,7 @@ abstract class Request<T> {
   Map<String, String> get queryParameters => {};
 
   /// Returns the adapter.
-  Adapter<T> get adapter;
+  Adapter<RESULT_TYPE, MODEL_TYPE> get adapter;
 
   /// Returns the model builder.
   dynamic get builder;

@@ -8,6 +8,7 @@ import 'package:json_response/json_response.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
+import 'package:resas/src/const/result_multiplicity.dart';
 
 /// This is an abstract class that provides a function
 /// to convert the response returned from HTTP communication
@@ -20,14 +21,25 @@ import 'package:resas/resas.dart';
 /// The generic of this abstract class should be the type
 /// returned by the [convert] method implemented in the concrete class
 /// that inherits from this abstract class.
-class Adapter<T> {
-  Adapter.newInstance();
+class Adapter<RESULT_TYPE, MODEL_TYPE> {
+  factory Adapter.ofSingleResult() =>
+      Adapter._internal(multiplicity: ResultMultiplicity.single);
+
+  factory Adapter.ofMultipleResults() =>
+      Adapter._internal(multiplicity: ResultMultiplicity.multiple);
+
+  Adapter._internal({
+    required this.multiplicity,
+  });
+
+  /// The result multiplicity
+  final ResultMultiplicity multiplicity;
 
   /// Converts the [response] given as an argument into an entity object
   /// corresponding to each RESAS API and returns it.
-  ResasResponse<T> convert({
+  ResasResponse<RESULT_TYPE> convert({
     required http.Response response,
-    required T Function(Map<String, dynamic>) builder,
+    required MODEL_TYPE Function(Map<String, dynamic>) builder,
   }) =>
       _buildResponse(
         response: response,
@@ -35,31 +47,37 @@ class Adapter<T> {
         builder: builder,
       );
 
-  ResasResponse<T> _buildResponse({
+  ResasResponse<RESULT_TYPE> _buildResponse({
     required http.Response response,
     required Json json,
-    required T Function(Map<String, dynamic>) builder,
+    required MODEL_TYPE Function(Map<String, dynamic>) builder,
   }) =>
-      ResasResponse<T>.from(
+      ResasResponse<RESULT_TYPE>.from(
         statusCode: response.statusCode,
         reasonPhrase: response.reasonPhrase ?? '',
         headers: response.headers,
         message: json.getString(key: 'message'),
-        results: _buildResults(
-          jsonArray: json.getArray(key: 'result'),
+        result: _buildResult(
+          json: multiplicity == ResultMultiplicity.single
+              ? json.get(key: 'result')
+              : json.getArray(key: 'result'),
           builder: builder,
         ),
       );
 
-  List<T> _buildResults({
-    required JsonArray jsonArray,
-    required T Function(Map<String, dynamic>) builder,
+  dynamic _buildResult({
+    required dynamic json,
+    required MODEL_TYPE Function(Map<String, dynamic>) builder,
   }) {
-    final results = <T>[];
-    jsonArray.forEach((json) {
-      results.add(builder(json.toMap()));
-    });
+    if (json is Json) {
+      return builder(json.toMap());
+    } else {
+      final results = <MODEL_TYPE>[];
+      json.forEach((json) {
+        results.add(builder(json.toMap()));
+      });
 
-    return results;
+      return results;
+    }
   }
 }

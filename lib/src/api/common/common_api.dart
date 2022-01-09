@@ -28,65 +28,65 @@ abstract class CommonApi {
   static CommonApi get instance => CommonApiImpl.instance;
 
   /// Returns the list of prefectures in Japan.
-  Future<ResasResponse<Prefecture>> prefectures();
+  Future<ResasResponse<List<Prefecture>>> prefectures();
 
   /// Returns the list of cities in Japan linked to [prefectureCode].
-  Future<ResasResponse<City>> cities({
+  Future<ResasResponse<List<City>>> cities({
     required int prefectureCode,
   });
 
   /// Returns the list of old cities in Japan linked to [prefectureCode] and [cityCode].
-  Future<ResasResponse<OldCity>> oldCities({
+  Future<ResasResponse<List<OldCity>>> oldCities({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<ResasResponse<BroadIndustry>> broadIndustries();
+  Future<ResasResponse<List<BroadIndustry>>> broadIndustries();
 
-  Future<ResasResponse<MiddleIndustry>> middleIndustries({
+  Future<ResasResponse<List<MiddleIndustry>>> middleIndustries({
     required String broadParentCode,
   });
 
-  Future<ResasResponse<NarrowIndustry>> narrowIndustries({
+  Future<ResasResponse<List<NarrowIndustry>>> narrowIndustries({
     required String middleParentCode,
   });
 
-  Future<ResasResponse<BroadJob>> broadJobs();
+  Future<ResasResponse<List<BroadJob>>> broadJobs();
 
-  Future<ResasResponse<MiddleJob>> middleJobs({
+  Future<ResasResponse<List<MiddleJob>>> middleJobs({
     required String broadParentCode,
   });
 
-  Future<ResasResponse<BroadPatent>> broadPatents();
+  Future<ResasResponse<List<BroadPatent>>> broadPatents();
 
-  Future<ResasResponse<MiddlePatent>> middlePatents({
+  Future<ResasResponse<List<MiddlePatent>>> middlePatents({
     required String broadParentCode,
   });
 
-  Future<ResasResponse<CustomHouse>> customHouses({
+  Future<ResasResponse<List<CustomHouse>>> customHouses({
     required int prefectureCode,
   });
 
-  Future<ResasResponse<BroadTradingArea>> broadTradingAreas();
+  Future<ResasResponse<List<BroadTradingArea>>> broadTradingAreas();
 
-  Future<ResasResponse<MiddleTradingArea>> middleTradingAreas({
+  Future<ResasResponse<List<MiddleTradingArea>>> middleTradingAreas({
     required int broadParentCode,
   });
 
-  Future<ResasResponse<AgricultureDepartment>> agricultureDepartments();
+  Future<ResasResponse<List<AgricultureDepartment>>> agricultureDepartments();
 
-  Future<ResasResponse<PatenteeLocation>> patenteeLocations({
+  Future<ResasResponse<List<PatenteeLocation>>> patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   });
 
-  Future<ResasResponse<BroadTradingItem>> broadTradingItems();
+  Future<ResasResponse<List<BroadTradingItem>>> broadTradingItems();
 
-  Future<ResasResponse<MiddleTradingItem>> middleTradingItems({
+  Future<ResasResponse<List<MiddleTradingItem>>> middleTradingItems({
     required int broadParentCode,
   });
 
-  Future<ResasResponse<NarrowTradingItem>> narrowTradingItems({
+  Future<ResasResponse<List<NarrowTradingItem>>> narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   });

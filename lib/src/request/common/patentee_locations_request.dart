@@ -8,7 +8,8 @@ import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class PatenteeLocationsRequest extends Request<PatenteeLocation> {
+class PatenteeLocationsRequest
+    extends Request<List<PatenteeLocation>, PatenteeLocation> {
   /// Returns the new instance of [PatenteeLocationsRequest].
   PatenteeLocationsRequest.from({
     required this.prefectureCode,
@@ -22,18 +23,18 @@ class PatenteeLocationsRequest extends Request<PatenteeLocation> {
   final String cityCode;
 
   @override
-  Resource get resource => Resource.patenteeLocations;
+  get resource => Resource.patenteeLocations;
 
   @override
-  Map<String, String> get queryParameters => {
+  get queryParameters => {
         'prefCode': '$prefectureCode',
         'cityCode': cityCode,
       };
 
   @override
-  Adapter<PatenteeLocation> get adapter =>
-      Adapter<PatenteeLocation>.newInstance();
+  get adapter =>
+      Adapter<List<PatenteeLocation>, PatenteeLocation>.ofMultipleResults();
 
   @override
-  dynamic get builder => PatenteeLocation.fromJson;
+  get builder => PatenteeLocation.fromJson;
 }

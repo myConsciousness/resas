@@ -3,17 +3,13 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Project imports:
-import 'package:resas/resas.dart';
 import 'package:resas/src/api/common/common_api.dart';
 import 'package:resas/src/const/classification.dart';
-import 'package:resas/src/model/common/agriculture_department.dart';
 import 'package:resas/src/model/common/broad_industry.dart';
 import 'package:resas/src/model/common/broad_job.dart';
 import 'package:resas/src/model/common/broad_patent.dart';
 import 'package:resas/src/model/common/broad_trading_area.dart';
 import 'package:resas/src/model/common/broad_trading_item.dart';
-import 'package:resas/src/model/common/city.dart';
-import 'package:resas/src/model/common/custom_house.dart';
 import 'package:resas/src/model/common/middle_industry.dart';
 import 'package:resas/src/model/common/middle_job.dart';
 import 'package:resas/src/model/common/middle_patent.dart';
@@ -21,9 +17,6 @@ import 'package:resas/src/model/common/middle_trading_area.dart';
 import 'package:resas/src/model/common/middle_trading_item.dart';
 import 'package:resas/src/model/common/narrow_industry.dart';
 import 'package:resas/src/model/common/narrow_trading_item.dart';
-import 'package:resas/src/model/common/old_city.dart';
-import 'package:resas/src/model/common/patentee_location.dart';
-import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/request/common/agriculture_departments_request.dart';
 import 'package:resas/src/request/common/cities_request.dart';
 import 'package:resas/src/request/common/custom_houses_request.dart';
@@ -47,17 +40,16 @@ class CommonApiImpl implements CommonApi {
   static final _singletonInstance = CommonApiImpl._internal();
 
   @override
-  Future<ResasResponse<Prefecture>> prefectures() async =>
-      PrefecturesRequest.newInstance().get();
+  prefectures() async => PrefecturesRequest.newInstance().get();
 
   @override
-  Future<ResasResponse<City>> cities({
+  cities({
     required int prefectureCode,
   }) async =>
       CitiesRequest.from(prefectureCode: prefectureCode).get();
 
   @override
-  Future<ResasResponse<OldCity>> oldCities({
+  oldCities({
     required int prefectureCode,
     required String cityCode,
   }) async =>
@@ -67,13 +59,12 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<BroadIndustry>> broadIndustries() async =>
-      await IndustriesRequest<BroadIndustry>.from(
+  broadIndustries() async => await IndustriesRequest<BroadIndustry>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse<MiddleIndustry>> middleIndustries({
+  middleIndustries({
     required String broadParentCode,
   }) async =>
       await IndustriesRequest<MiddleIndustry>.from(
@@ -82,7 +73,7 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<NarrowIndustry>> narrowIndustries({
+  narrowIndustries({
     required String middleParentCode,
   }) async =>
       await IndustriesRequest<NarrowIndustry>.from(
@@ -91,13 +82,12 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<BroadJob>> broadJobs() async =>
-      await JobsRequest<BroadJob>.from(
+  broadJobs() async => await JobsRequest<BroadJob>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse<MiddleJob>> middleJobs({
+  middleJobs({
     required String broadParentCode,
   }) async =>
       await JobsRequest<MiddleJob>.from(
@@ -106,13 +96,12 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<BroadPatent>> broadPatents() async =>
-      await PatentsRequest<BroadPatent>.from(
+  broadPatents() async => await PatentsRequest<BroadPatent>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse<MiddlePatent>> middlePatents({
+  middlePatents({
     required String broadParentCode,
   }) async =>
       await PatentsRequest<MiddlePatent>.from(
@@ -121,7 +110,7 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<CustomHouse>> customHouses({
+  customHouses({
     required int prefectureCode,
   }) async =>
       CustomHousesRequest.from(
@@ -129,13 +118,12 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<BroadTradingArea>> broadTradingAreas() async =>
-      await TradingAreasRequest<BroadTradingArea>.from(
+  broadTradingAreas() async => await TradingAreasRequest<BroadTradingArea>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse<MiddleTradingArea>> middleTradingAreas({
+  middleTradingAreas({
     required int broadParentCode,
   }) async =>
       await TradingAreasRequest<MiddleTradingArea>.from(
@@ -144,11 +132,11 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<AgricultureDepartment>> agricultureDepartments() async =>
+  agricultureDepartments() async =>
       await AgricultureDepartmentsRequest.newInstance().get();
 
   @override
-  Future<ResasResponse<PatenteeLocation>> patenteeLocations({
+  patenteeLocations({
     required int prefectureCode,
     required String cityCode,
   }) async =>
@@ -158,13 +146,12 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<BroadTradingItem>> broadTradingItems() async =>
-      TradingItemsRequest<BroadTradingItem>.from(
+  broadTradingItems() async => TradingItemsRequest<BroadTradingItem>.from(
         classification: Classification.broad,
       ).get();
 
   @override
-  Future<ResasResponse<MiddleTradingItem>> middleTradingItems({
+  middleTradingItems({
     required int broadParentCode,
   }) async =>
       TradingItemsRequest<MiddleTradingItem>.from(
@@ -173,7 +160,7 @@ class CommonApiImpl implements CommonApi {
       ).get();
 
   @override
-  Future<ResasResponse<NarrowTradingItem>> narrowTradingItems({
+  narrowTradingItems({
     required int broadParentCode,
     required int middleParentCode,
   }) async =>

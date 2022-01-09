@@ -11,7 +11,7 @@ import 'package:resas/src/model/common/narrow_trading_item.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
 
-class TradingItemsRequest<T> extends Request<T> {
+class TradingItemsRequest<T> extends Request<List<T>, T> {
   /// Returns the new instance of [TradingItemsRequest] based on argument.
   TradingItemsRequest.from({
     required this.classification,
@@ -29,7 +29,7 @@ class TradingItemsRequest<T> extends Request<T> {
   final int? middleParentCode;
 
   @override
-  Resource get resource {
+  get resource {
     switch (classification) {
       case Classification.broad:
         return Resource.broadTradingItems;
@@ -41,7 +41,7 @@ class TradingItemsRequest<T> extends Request<T> {
   }
 
   @override
-  Map<String, String> get queryParameters {
+  get queryParameters {
     switch (classification) {
       case Classification.broad:
         return {};
@@ -59,10 +59,10 @@ class TradingItemsRequest<T> extends Request<T> {
   }
 
   @override
-  Adapter<T> get adapter => Adapter<T>.newInstance();
+  get adapter => Adapter<List<T>, T>.ofMultipleResults();
 
   @override
-  dynamic get builder {
+  get builder {
     switch (classification) {
       case Classification.broad:
         return BroadTradingItem.fromJson;

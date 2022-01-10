@@ -11,10 +11,13 @@ import 'package:resas/src/const/develolpment_transition_display_type.dart';
 import 'package:resas/src/const/development_transition_display_method.dart';
 import 'package:resas/src/const/development_transition_gender.dart';
 import 'package:resas/src/const/development_transition_matter.dart';
+import 'package:resas/src/const/mesh_chart_display_method.dart';
+import 'package:resas/src/const/mesh_chart_matter.dart';
 import 'package:resas/src/model/population/composition/composition_per_year.dart';
 import 'package:resas/src/model/population/composition/composition_pyramid.dart';
 import 'package:resas/src/model/population/education/development_transition.dart';
 import 'package:resas/src/model/population/future/future_cities.dart';
+import 'package:resas/src/model/population/mesh/mesh_chart.dart';
 import 'package:resas/src/model/population/nature/nature.dart';
 import 'package:resas/src/model/population/society/society_for_age_class.dart';
 import 'package:resas/src/model/population/society/society_for_age_class_line.dart';
@@ -28,6 +31,9 @@ export 'package:resas/src/const/develolpment_transition_display_type.dart';
 export 'package:resas/src/const/development_transition_display_method.dart';
 export 'package:resas/src/const/development_transition_gender.dart';
 export 'package:resas/src/const/development_transition_matter.dart';
+
+export 'package:resas/src/const/mesh_chart_display_method.dart';
+export 'package:resas/src/const/mesh_chart_matter.dart';
 
 abstract class PopulationApi {
   static PopulationApi get instance => PopulationApiImpl.instance;
@@ -87,5 +93,13 @@ abstract class PopulationApi {
   Future<ResasResponse<FutureCities>> futureCities({
     required int year,
     required int prefectureCode,
+  });
+
+  Future<ResasResponse<MeshChart>> meshChart({
+    required int year,
+    required int prefectureCode,
+    required String cityCode,
+    required MeshChartMatter matter,
+    required MeshChartDisplayMethod displayMethod,
   });
 }

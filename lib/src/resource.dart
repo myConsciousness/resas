@@ -87,6 +87,9 @@ enum Resource {
 
   /// Future cities
   futureCities,
+
+  /// Mesh chart
+  meshChart,
 }
 
 /// The extension of [Resource].
@@ -150,6 +153,8 @@ extension ResourceExt on Resource {
         return 'api/v1/employEducation/localjobAcademic/toTransition';
       case Resource.futureCities:
         return 'api/v1/population/future/cities';
+      case Resource.meshChart:
+        return 'api/v1/population/mesh/chart';
     }
   }
 }

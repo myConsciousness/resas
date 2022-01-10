@@ -10,11 +10,15 @@ _$_SocietyForAreaDataset _$$_SocietyForAreaDatasetFromJson(
         Map<String, dynamic> json) =>
     _$_SocietyForAreaDataset(
       year: json['year'] as int,
-      positiveAreas: (json['positiveAreas'] as List<dynamic>)
-          .map((e) => SocietyForAreaData.fromJson(e as Map<String, dynamic>))
+      positiveAreas: (json['positiveAreas'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : SocietyForAreaData.fromJson(e as Map<String, dynamic>))
           .toList(),
-      negativeAreas: (json['negativeAreas'] as List<dynamic>)
-          .map((e) => SocietyForAreaData.fromJson(e as Map<String, dynamic>))
+      negativeAreas: (json['negativeAreas'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : SocietyForAreaData.fromJson(e as Map<String, dynamic>))
           .toList(),
       total: SocietyForAreaDataTotal.fromJson(
           json['total'] as Map<String, dynamic>),

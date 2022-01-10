@@ -10,6 +10,7 @@ import 'package:resas/src/model/population/composition/composition_per_year.dart
 import 'package:resas/src/model/population/composition/composition_pyramid.dart';
 import 'package:resas/src/model/population/nature/nature.dart';
 import 'package:resas/src/model/population/society/society_for_age_class.dart';
+import 'package:resas/src/model/population/society/society_for_age_class_line.dart';
 import 'package:resas/src/model/population/society/society_for_area.dart';
 import 'package:resas/src/model/population/sum/sum_estimate.dart';
 import 'package:resas/src/model/population/sum/sum_per_year.dart';
@@ -52,6 +53,11 @@ abstract class PopulationApi {
   });
 
   Future<ResasResponse<SocietyForAgeClass>> societyForAgeClass({
+    required int prefectureCode,
+    String cityCode = '-',
+  });
+
+  Future<ResasResponse<SocietyForAgeClassLine>> societyForAgeClassLine({
     required int prefectureCode,
     String cityCode = '-',
   });

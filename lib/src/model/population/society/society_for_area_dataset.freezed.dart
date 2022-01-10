@@ -25,8 +25,8 @@ class _$SocietyForAreaDatasetTearOff {
 
   _SocietyForAreaDataset call(
       {required int year,
-      required List<SocietyForAreaData> positiveAreas,
-      required List<SocietyForAreaData> negativeAreas,
+      required List<SocietyForAreaData?>? positiveAreas,
+      required List<SocietyForAreaData?>? negativeAreas,
       required SocietyForAreaDataTotal total}) {
     return _SocietyForAreaDataset(
       year: year,
@@ -47,9 +47,9 @@ const $SocietyForAreaDataset = _$SocietyForAreaDatasetTearOff();
 /// @nodoc
 mixin _$SocietyForAreaDataset {
   int get year => throw _privateConstructorUsedError;
-  List<SocietyForAreaData> get positiveAreas =>
+  List<SocietyForAreaData?>? get positiveAreas =>
       throw _privateConstructorUsedError;
-  List<SocietyForAreaData> get negativeAreas =>
+  List<SocietyForAreaData?>? get negativeAreas =>
       throw _privateConstructorUsedError;
   SocietyForAreaDataTotal get total => throw _privateConstructorUsedError;
 
@@ -66,8 +66,8 @@ abstract class $SocietyForAreaDatasetCopyWith<$Res> {
       _$SocietyForAreaDatasetCopyWithImpl<$Res>;
   $Res call(
       {int year,
-      List<SocietyForAreaData> positiveAreas,
-      List<SocietyForAreaData> negativeAreas,
+      List<SocietyForAreaData?>? positiveAreas,
+      List<SocietyForAreaData?>? negativeAreas,
       SocietyForAreaDataTotal total});
 
   $SocietyForAreaDataTotalCopyWith<$Res> get total;
@@ -97,11 +97,11 @@ class _$SocietyForAreaDatasetCopyWithImpl<$Res>
       positiveAreas: positiveAreas == freezed
           ? _value.positiveAreas
           : positiveAreas // ignore: cast_nullable_to_non_nullable
-              as List<SocietyForAreaData>,
+              as List<SocietyForAreaData?>?,
       negativeAreas: negativeAreas == freezed
           ? _value.negativeAreas
           : negativeAreas // ignore: cast_nullable_to_non_nullable
-              as List<SocietyForAreaData>,
+              as List<SocietyForAreaData?>?,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -126,8 +126,8 @@ abstract class _$SocietyForAreaDatasetCopyWith<$Res>
   @override
   $Res call(
       {int year,
-      List<SocietyForAreaData> positiveAreas,
-      List<SocietyForAreaData> negativeAreas,
+      List<SocietyForAreaData?>? positiveAreas,
+      List<SocietyForAreaData?>? negativeAreas,
       SocietyForAreaDataTotal total});
 
   @override
@@ -160,11 +160,11 @@ class __$SocietyForAreaDatasetCopyWithImpl<$Res>
       positiveAreas: positiveAreas == freezed
           ? _value.positiveAreas
           : positiveAreas // ignore: cast_nullable_to_non_nullable
-              as List<SocietyForAreaData>,
+              as List<SocietyForAreaData?>?,
       negativeAreas: negativeAreas == freezed
           ? _value.negativeAreas
           : negativeAreas // ignore: cast_nullable_to_non_nullable
-              as List<SocietyForAreaData>,
+              as List<SocietyForAreaData?>?,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -188,9 +188,9 @@ class _$_SocietyForAreaDataset implements _SocietyForAreaDataset {
   @override
   final int year;
   @override
-  final List<SocietyForAreaData> positiveAreas;
+  final List<SocietyForAreaData?>? positiveAreas;
   @override
-  final List<SocietyForAreaData> negativeAreas;
+  final List<SocietyForAreaData?>? negativeAreas;
   @override
   final SocietyForAreaDataTotal total;
 
@@ -235,8 +235,8 @@ class _$_SocietyForAreaDataset implements _SocietyForAreaDataset {
 abstract class _SocietyForAreaDataset implements SocietyForAreaDataset {
   const factory _SocietyForAreaDataset(
       {required int year,
-      required List<SocietyForAreaData> positiveAreas,
-      required List<SocietyForAreaData> negativeAreas,
+      required List<SocietyForAreaData?>? positiveAreas,
+      required List<SocietyForAreaData?>? negativeAreas,
       required SocietyForAreaDataTotal total}) = _$_SocietyForAreaDataset;
 
   factory _SocietyForAreaDataset.fromJson(Map<String, dynamic> json) =
@@ -245,9 +245,9 @@ abstract class _SocietyForAreaDataset implements SocietyForAreaDataset {
   @override
   int get year;
   @override
-  List<SocietyForAreaData> get positiveAreas;
+  List<SocietyForAreaData?>? get positiveAreas;
   @override
-  List<SocietyForAreaData> get negativeAreas;
+  List<SocietyForAreaData?>? get negativeAreas;
   @override
   SocietyForAreaDataTotal get total;
   @override

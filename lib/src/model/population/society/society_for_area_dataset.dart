@@ -15,8 +15,8 @@ class SocietyForAreaDataset with _$SocietyForAreaDataset {
   /// Returns the new instance of [SocietyForAreaDataset] based on arguments.
   const factory SocietyForAreaDataset({
     required int year,
-    required List<SocietyForAreaData> positiveAreas,
-    required List<SocietyForAreaData> negativeAreas,
+    required List<SocietyForAreaData?>? positiveAreas,
+    required List<SocietyForAreaData?>? negativeAreas,
     required SocietyForAreaDataTotal total,
   }) = _SocietyForAreaDataset;
 

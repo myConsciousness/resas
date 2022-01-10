@@ -7,6 +7,7 @@ import 'package:resas/src/api/population/population_api.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
 import 'package:resas/src/request/population/nature/nature_request.dart';
+import 'package:resas/src/request/population/society/society_for_age_class_request.dart';
 import 'package:resas/src/request/population/society/society_for_area_request.dart';
 import 'package:resas/src/request/population/sum/sum_estimate_request.dart';
 import 'package:resas/src/request/population/sum/sum_per_year_request.dart';
@@ -84,4 +85,14 @@ class PopulationApiImpl implements PopulationApi {
     required int prefectureCode,
   }) async =>
       await SocietyForAreaRequest.from(prefectureCode: prefectureCode).get();
+
+  @override
+  societyForAgeClass({
+    required int prefectureCode,
+    String cityCode = '-',
+  }) async =>
+      SocietyForAgeClassRequest.from(
+        prefectureCode: prefectureCode,
+        cityCode: cityCode,
+      ).get();
 }

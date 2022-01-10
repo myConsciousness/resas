@@ -4,11 +4,6 @@
 
 // Project imports:
 import 'package:resas/src/api/population/population_api.dart';
-import 'package:resas/src/const/develolpment_transition_classification.dart';
-import 'package:resas/src/const/develolpment_transition_display_type.dart';
-import 'package:resas/src/const/development_transition_display_method.dart';
-import 'package:resas/src/const/development_transition_gender.dart';
-import 'package:resas/src/const/development_transition_matter.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
 import 'package:resas/src/request/population/education/development_transition_request.dart';

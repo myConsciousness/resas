@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/population/society/society_for_age_class_line_data.dart';
 
 part 'society_for_age_class_line_dataset.freezed.dart';

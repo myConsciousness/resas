@@ -4,7 +4,6 @@
 
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
-
 import 'package:resas/src/model/population/society/society_for_age_class_line.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';

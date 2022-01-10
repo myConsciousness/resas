@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/population/education/development_transition_dataset.dart';
 
 part 'development_transition.freezed.dart';

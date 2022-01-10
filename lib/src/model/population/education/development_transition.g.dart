@@ -9,7 +9,7 @@ part of 'development_transition.dart';
 _$_DevelopmentTransition _$$_DevelopmentTransitionFromJson(
         Map<String, dynamic> json) =>
     _$_DevelopmentTransition(
-      changes: (json['changes'] as List<dynamic>)
+      data: (json['changes'] as List<dynamic>)
           .map((e) =>
               DevelopmentTransitionDataset.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -18,5 +18,5 @@ _$_DevelopmentTransition _$$_DevelopmentTransitionFromJson(
 Map<String, dynamic> _$$_DevelopmentTransitionToJson(
         _$_DevelopmentTransition instance) =>
     <String, dynamic>{
-      'changes': instance.changes,
+      'changes': instance.data,
     };

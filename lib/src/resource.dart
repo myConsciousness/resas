@@ -84,6 +84,9 @@ enum Resource {
 
   /// Development transition
   developmentTransition,
+
+  /// Future cities
+  futureCities,
 }
 
 /// The extension of [Resource].
@@ -145,6 +148,8 @@ extension ResourceExt on Resource {
         return 'api/v1/population/society/forAgeClassLine';
       case Resource.developmentTransition:
         return 'api/v1/employEducation/localjobAcademic/toTransition';
+      case Resource.futureCities:
+        return 'api/v1/population/future/cities';
     }
   }
 }

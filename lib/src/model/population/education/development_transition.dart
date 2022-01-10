@@ -15,7 +15,7 @@ part 'development_transition.g.dart';
 class DevelopmentTransition with _$DevelopmentTransition {
   /// Returns the new instance of [DevelopmentTransition] based on arguments.
   const factory DevelopmentTransition({
-    required List<DevelopmentTransitionDataset> changes,
+    @JsonKey(name: 'changes') required List<DevelopmentTransitionDataset> data,
   }) = _DevelopmentTransition;
 
   factory DevelopmentTransition.fromJson(Map<String, dynamic> json) =>

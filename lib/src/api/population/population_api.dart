@@ -14,6 +14,7 @@ import 'package:resas/src/const/development_transition_matter.dart';
 import 'package:resas/src/model/population/composition/composition_per_year.dart';
 import 'package:resas/src/model/population/composition/composition_pyramid.dart';
 import 'package:resas/src/model/population/education/development_transition.dart';
+import 'package:resas/src/model/population/future/future_cities.dart';
 import 'package:resas/src/model/population/nature/nature.dart';
 import 'package:resas/src/model/population/society/society_for_age_class.dart';
 import 'package:resas/src/model/population/society/society_for_age_class_line.dart';
@@ -81,5 +82,10 @@ abstract class PopulationApi {
     required DevelopmentTransitionClassification classification,
     required DevelopmentTransitionDisplayType displayType,
     required DevelopmentTransitionGender gender,
+  });
+
+  Future<ResasResponse<FutureCities>> futureCities({
+    required int year,
+    required int prefectureCode,
   });
 }

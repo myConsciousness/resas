@@ -7,6 +7,7 @@ import 'package:resas/src/api/population/population_api.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
 import 'package:resas/src/request/population/education/development_transition_request.dart';
+import 'package:resas/src/request/population/future/future_cities_request.dart';
 import 'package:resas/src/request/population/nature/nature_request.dart';
 import 'package:resas/src/request/population/society/society_for_age_class_line_request.dart';
 import 'package:resas/src/request/population/society/society_for_age_class_request.dart';
@@ -124,5 +125,15 @@ class PopulationApiImpl implements PopulationApi {
         classification: classification,
         displayType: displayType,
         gender: gender,
+      ).get();
+
+  @override
+  futureCities({
+    required int year,
+    required int prefectureCode,
+  }) async =>
+      await FutureCitiesRequest.from(
+        year: year,
+        prefectureCode: prefectureCode,
       ).get();
 }

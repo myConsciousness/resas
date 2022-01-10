@@ -24,9 +24,10 @@ class _$DevelopmentTransitionTearOff {
   const _$DevelopmentTransitionTearOff();
 
   _DevelopmentTransition call(
-      {required List<DevelopmentTransitionDataset> changes}) {
+      {@JsonKey(name: 'changes')
+          required List<DevelopmentTransitionDataset> data}) {
     return _DevelopmentTransition(
-      changes: changes,
+      data: data,
     );
   }
 
@@ -40,7 +41,8 @@ const $DevelopmentTransition = _$DevelopmentTransitionTearOff();
 
 /// @nodoc
 mixin _$DevelopmentTransition {
-  List<DevelopmentTransitionDataset> get changes =>
+  @JsonKey(name: 'changes')
+  List<DevelopmentTransitionDataset> get data =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -54,7 +56,8 @@ abstract class $DevelopmentTransitionCopyWith<$Res> {
   factory $DevelopmentTransitionCopyWith(DevelopmentTransition value,
           $Res Function(DevelopmentTransition) then) =
       _$DevelopmentTransitionCopyWithImpl<$Res>;
-  $Res call({List<DevelopmentTransitionDataset> changes});
+  $Res call(
+      {@JsonKey(name: 'changes') List<DevelopmentTransitionDataset> data});
 }
 
 /// @nodoc
@@ -68,12 +71,12 @@ class _$DevelopmentTransitionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? changes = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      changes: changes == freezed
-          ? _value.changes
-          : changes // ignore: cast_nullable_to_non_nullable
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<DevelopmentTransitionDataset>,
     ));
   }
@@ -86,7 +89,8 @@ abstract class _$DevelopmentTransitionCopyWith<$Res>
           $Res Function(_DevelopmentTransition) then) =
       __$DevelopmentTransitionCopyWithImpl<$Res>;
   @override
-  $Res call({List<DevelopmentTransitionDataset> changes});
+  $Res call(
+      {@JsonKey(name: 'changes') List<DevelopmentTransitionDataset> data});
 }
 
 /// @nodoc
@@ -102,12 +106,12 @@ class __$DevelopmentTransitionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? changes = freezed,
+    Object? data = freezed,
   }) {
     return _then(_DevelopmentTransition(
-      changes: changes == freezed
-          ? _value.changes
-          : changes // ignore: cast_nullable_to_non_nullable
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<DevelopmentTransitionDataset>,
     ));
   }
@@ -116,17 +120,19 @@ class __$DevelopmentTransitionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DevelopmentTransition implements _DevelopmentTransition {
-  const _$_DevelopmentTransition({required this.changes});
+  const _$_DevelopmentTransition(
+      {@JsonKey(name: 'changes') required this.data});
 
   factory _$_DevelopmentTransition.fromJson(Map<String, dynamic> json) =>
       _$$_DevelopmentTransitionFromJson(json);
 
   @override
-  final List<DevelopmentTransitionDataset> changes;
+  @JsonKey(name: 'changes')
+  final List<DevelopmentTransitionDataset> data;
 
   @override
   String toString() {
-    return 'DevelopmentTransition(changes: $changes)';
+    return 'DevelopmentTransition(data: $data)';
   }
 
   @override
@@ -134,12 +140,12 @@ class _$_DevelopmentTransition implements _DevelopmentTransition {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DevelopmentTransition &&
-            const DeepCollectionEquality().equals(other.changes, changes));
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(changes));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
   @JsonKey(ignore: true)
   @override
@@ -155,14 +161,16 @@ class _$_DevelopmentTransition implements _DevelopmentTransition {
 
 abstract class _DevelopmentTransition implements DevelopmentTransition {
   const factory _DevelopmentTransition(
-          {required List<DevelopmentTransitionDataset> changes}) =
+          {@JsonKey(name: 'changes')
+              required List<DevelopmentTransitionDataset> data}) =
       _$_DevelopmentTransition;
 
   factory _DevelopmentTransition.fromJson(Map<String, dynamic> json) =
       _$_DevelopmentTransition.fromJson;
 
   @override
-  List<DevelopmentTransitionDataset> get changes;
+  @JsonKey(name: 'changes')
+  List<DevelopmentTransitionDataset> get data;
   @override
   @JsonKey(ignore: true)
   _$DevelopmentTransitionCopyWith<_DevelopmentTransition> get copyWith =>

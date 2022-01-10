@@ -81,6 +81,9 @@ enum Resource {
 
   /// Society for age class line
   societyForAgeClassLine,
+
+  /// Development transition
+  developmentTransition,
 }
 
 /// The extension of [Resource].
@@ -140,6 +143,8 @@ extension ResourceExt on Resource {
         return 'api/v1/population/society/forAgeClass';
       case Resource.societyForAgeClassLine:
         return 'api/v1/population/society/forAgeClassLine';
+      case Resource.developmentTransition:
+        return 'api/v1/employEducation/localjobAcademic/toTransition';
     }
   }
 }

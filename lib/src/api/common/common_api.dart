@@ -24,6 +24,8 @@ import 'package:resas/src/model/common/patentee_location.dart';
 import 'package:resas/src/model/common/prefecture.dart';
 import 'package:resas/src/response/resas_response.dart';
 
+export 'package:resas/src/const/city_type.dart';
+
 abstract class CommonApi {
   static CommonApi get instance => CommonApiImpl.instance;
 

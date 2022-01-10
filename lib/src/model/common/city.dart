@@ -8,8 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 // Project imports:
 import 'package:resas/src/const/city_type.dart';
 
-export 'package:resas/src/const/city_type.dart';
-
 part 'city.freezed.dart';
 part 'city.g.dart';
 

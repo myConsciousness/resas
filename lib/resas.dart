@@ -9,4 +9,6 @@ export 'src/resas.dart';
 
 // Common response objects.
 export 'src/response/response.dart';
-export 'src/response/resas_response.dart';
+export 'src/response/response.dart';
+export 'src/api/common/common_api.dart';
+export 'src/api/population/population_api.dart';

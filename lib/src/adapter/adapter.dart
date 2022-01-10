@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:json_response/json_response.dart';
 
 // Project imports:
-import 'package:resas/resas.dart';
 import 'package:resas/src/const/result_multiplicity.dart';
+import 'package:resas/src/response/resas_response.dart';
 
 /// This is an abstract class that provides a function
 /// to convert the response returned from HTTP communication

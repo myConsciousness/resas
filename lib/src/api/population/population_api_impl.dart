@@ -4,8 +4,14 @@
 
 // Project imports:
 import 'package:resas/src/api/population/population_api.dart';
+import 'package:resas/src/const/develolpment_transition_classification.dart';
+import 'package:resas/src/const/develolpment_transition_display_type.dart';
+import 'package:resas/src/const/development_transition_display_method.dart';
+import 'package:resas/src/const/development_transition_gender.dart';
+import 'package:resas/src/const/development_transition_matter.dart';
 import 'package:resas/src/request/population/composition/composition_per_year_request.dart';
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
+import 'package:resas/src/request/population/education/development_transition_request.dart';
 import 'package:resas/src/request/population/nature/nature_request.dart';
 import 'package:resas/src/request/population/society/society_for_age_class_line_request.dart';
 import 'package:resas/src/request/population/society/society_for_age_class_request.dart';
@@ -105,5 +111,23 @@ class PopulationApiImpl implements PopulationApi {
       SocietyForAgeClassLineRequest.from(
         prefectureCode: prefectureCode,
         cityCode: cityCode,
+      ).get();
+
+  @override
+  developmentTransition({
+    required int prefectureCode,
+    required DevelopmentTransitionDisplayMethod displayMethod,
+    required DevelopmentTransitionMatter matter,
+    required DevelopmentTransitionClassification classification,
+    required DevelopmentTransitionDisplayType displayType,
+    required DevelopmentTransitionGender gender,
+  }) async =>
+      await DevelopmentTransitionRequest.from(
+        prefectureCode: prefectureCode,
+        displayMethod: displayMethod,
+        matter: matter,
+        classification: classification,
+        displayType: displayType,
+        gender: gender,
       ).get();
 }

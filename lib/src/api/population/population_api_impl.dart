@@ -8,6 +8,7 @@ import 'package:resas/src/request/population/composition/composition_per_year_re
 import 'package:resas/src/request/population/composition/composition_pyramid_request.dart';
 import 'package:resas/src/request/population/education/development_transition_request.dart';
 import 'package:resas/src/request/population/future/future_cities_request.dart';
+import 'package:resas/src/request/population/future/future_mesh_chart_request.dart';
 import 'package:resas/src/request/population/mesh/mesh_chart_request.dart';
 import 'package:resas/src/request/population/nature/nature_request.dart';
 import 'package:resas/src/request/population/society/society_for_age_class_line_request.dart';
@@ -151,6 +152,20 @@ class PopulationApiImpl implements PopulationApi {
         prefectureCode: prefectureCode,
         cityCode: cityCode,
         matter: matter,
+        displayMethod: displayMethod,
+      ).get();
+
+  @override
+  futureMeshChart({
+    required int year,
+    required int prefectureCode,
+    required String cityCode,
+    required MeshChartDisplayMethod displayMethod,
+  }) async =>
+      await FutureMeshChartRequest.from(
+        year: year,
+        prefectureCode: prefectureCode,
+        cityCode: cityCode,
         displayMethod: displayMethod,
       ).get();
 }

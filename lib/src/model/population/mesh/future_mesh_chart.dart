@@ -6,25 +6,24 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
-import 'package:resas/src/model/population/mesh/mesh_chart_data.dart';
+import 'package:resas/src/model/population/mesh/future_mesh_chart_data.dart';
 
-part 'mesh_chart.freezed.dart';
-part 'mesh_chart.g.dart';
+part 'future_mesh_chart.freezed.dart';
+part 'future_mesh_chart.g.dart';
 
 @freezed
-class MeshChart with _$MeshChart {
-  /// Returns the new instance of [MeshChart] based on arguments.
-  const factory MeshChart({
+class FutureMeshChart with _$FutureMeshChart {
+  /// Returns the new instance of [FutureMeshChart] based on arguments.
+  const factory FutureMeshChart({
     @JsonKey(name: 'prefCode') required String prefectureCode,
     @JsonKey(name: 'prefName') required String prefectureName,
     required String cityCode,
     required String cityName,
     required String year,
     required String displayMethod,
-    required String matter,
-    required List<MeshChartData> data,
-  }) = _MeshChart;
+    required List<FutureMeshChartData> data,
+  }) = _FutureMeshChart;
 
-  factory MeshChart.fromJson(Map<String, dynamic> json) =>
-      _$MeshChartFromJson(json);
+  factory FutureMeshChart.fromJson(Map<String, dynamic> json) =>
+      _$FutureMeshChartFromJson(json);
 }

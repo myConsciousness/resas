@@ -17,6 +17,7 @@ import 'package:resas/src/model/population/composition/composition_per_year.dart
 import 'package:resas/src/model/population/composition/composition_pyramid.dart';
 import 'package:resas/src/model/population/education/development_transition.dart';
 import 'package:resas/src/model/population/future/future_cities.dart';
+import 'package:resas/src/model/population/mesh/future_mesh_chart.dart';
 import 'package:resas/src/model/population/mesh/mesh_chart.dart';
 import 'package:resas/src/model/population/nature/nature.dart';
 import 'package:resas/src/model/population/society/society_for_age_class.dart';
@@ -100,6 +101,13 @@ abstract class PopulationApi {
     required int prefectureCode,
     required String cityCode,
     required MeshChartMatter matter,
+    required MeshChartDisplayMethod displayMethod,
+  });
+
+  Future<ResasResponse<FutureMeshChart>> futureMeshChart({
+    required int year,
+    required int prefectureCode,
+    required String cityCode,
     required MeshChartDisplayMethod displayMethod,
   });
 }

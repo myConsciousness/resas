@@ -90,6 +90,9 @@ enum Resource {
 
   /// Mesh chart
   meshChart,
+
+  /// Future mesh chart
+  futureMeshChart,
 }
 
 /// The extension of [Resource].
@@ -155,6 +158,8 @@ extension ResourceExt on Resource {
         return 'api/v1/population/future/cities';
       case Resource.meshChart:
         return 'api/v1/population/mesh/chart';
+      case Resource.futureMeshChart:
+        return 'api/v1/population/futureMesh/chart';
     }
   }
 }

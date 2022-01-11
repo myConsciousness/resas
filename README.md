@@ -80,13 +80,13 @@ void main() async {
   print(prefecturesResponse);
 
   final citiesResponse = await resas.common.cities(
-    prefectureCode: prefecturesResponse.results[0].code,
+    prefectureCode: prefecturesResponse.result![0].code,
   );
   print(citiesResponse);
 
   final oldCitiesResponse = await resas.common.oldCities(
-    prefectureCode: prefecturesResponse.results[0].code,
-    cityCode: citiesResponse.results[0].code,
+    prefectureCode: prefecturesResponse.result![0].code,
+    cityCode: citiesResponse.result![0].code,
   );
   print(oldCitiesResponse);
 }

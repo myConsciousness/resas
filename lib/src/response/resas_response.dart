@@ -26,7 +26,7 @@ class ResasResponse<T> extends Response<T> {
   final String message;
 
   @override
-  final T result;
+  final T? result;
 
   @override
   String toString() => 'ResasResponse(message: $message, result: $result)';

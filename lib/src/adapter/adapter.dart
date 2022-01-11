@@ -40,12 +40,23 @@ class Adapter<RESULT_TYPE, MODEL_TYPE> {
   ResasResponse<RESULT_TYPE> convert({
     required http.Response response,
     required MODEL_TYPE Function(Map<String, dynamic>) builder,
-  }) =>
-      _buildResponse(
-        response: response,
-        json: Json.from(response: response),
-        builder: builder,
+  }) {
+    if (response.statusCode != 200) {
+      return ResasResponse.from(
+        statusCode: response.statusCode,
+        reasonPhrase: response.reasonPhrase ?? '',
+        headers: response.headers,
+        message: '',
+        result: null,
       );
+    }
+
+    return _buildResponse(
+      response: response,
+      json: Json.from(response: response),
+      builder: builder,
+    );
+  }
 
   ResasResponse<RESULT_TYPE> _buildResponse({
     required http.Response response,

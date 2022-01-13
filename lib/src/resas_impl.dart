@@ -7,6 +7,7 @@ import 'package:cache_storage/cache_storage.dart';
 
 // Project imports:
 import 'package:resas/resas.dart';
+import 'package:resas/src/api/tourism/tourism_api.dart';
 
 /// This is an implementation class of the [Resas].
 class ResasImpl implements Resas {
@@ -21,8 +22,11 @@ class ResasImpl implements Resas {
   static final _cacheStorage = CacheStorage.open();
 
   @override
-  CommonApi get common => CommonApi.instance;
+  get common => CommonApi.instance;
 
   @override
-  PopulationApi get population => PopulationApi.instance;
+  get population => PopulationApi.instance;
+
+  @override
+  get tourism => TourismApi.instance;
 }

@@ -93,6 +93,12 @@ enum Resource {
 
   /// Future mesh chart
   futureMeshChart,
+
+  /// Guest prefecture line
+  guestPrefectureLine,
+
+  /// Hotel analysis facility stack
+  hotelAnalysisFacilityStack,
 }
 
 /// The extension of [Resource].
@@ -160,6 +166,10 @@ extension ResourceExt on Resource {
         return 'api/v1/population/mesh/chart';
       case Resource.futureMeshChart:
         return 'api/v1/population/futureMesh/chart';
+      case Resource.guestPrefectureLine:
+        return 'api/v1/tourism/guest/prefLine';
+      case Resource.hotelAnalysisFacilityStack:
+        return 'api/v1/tourism/hotelAnalysis/facilityStack';
     }
   }
 }

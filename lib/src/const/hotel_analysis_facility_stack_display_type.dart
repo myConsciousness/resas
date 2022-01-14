@@ -3,20 +3,20 @@
 // BSD-style license that can be found in the LICENSE file.
 
 enum HotelAnalysisFacilityStackDisplayType {
-  /// By employee size
-  byEmployeeSize,
+  /// Per employee size
+  perEmployeeSize,
 
-  /// By facility size (Default)
-  byFacilityType,
+  /// Per facility size (Default)
+  perFacilityType,
 }
 
 extension HotelAnalysisFacilityStackDisplayTypeFeature
     on HotelAnalysisFacilityStackDisplayType {
   String get code {
     switch (this) {
-      case HotelAnalysisFacilityStackDisplayType.byEmployeeSize:
+      case HotelAnalysisFacilityStackDisplayType.perEmployeeSize:
         return '1';
-      case HotelAnalysisFacilityStackDisplayType.byFacilityType:
+      case HotelAnalysisFacilityStackDisplayType.perFacilityType:
         return '2';
     }
   }

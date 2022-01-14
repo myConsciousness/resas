@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/tourism/local/hotel_analysis_facility_stack_data.dart';
 
 part 'hotel_analysis_facility_stack_dataset.freezed.dart';

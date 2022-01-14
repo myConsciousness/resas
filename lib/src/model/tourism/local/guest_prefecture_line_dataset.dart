@@ -4,6 +4,8 @@
 
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
 import 'package:resas/src/model/tourism/local/guest_prefecture_line_data.dart';
 
 part 'guest_prefecture_line_dataset.freezed.dart';

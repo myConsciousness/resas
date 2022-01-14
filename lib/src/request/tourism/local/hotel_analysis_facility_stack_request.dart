@@ -5,7 +5,7 @@
 // Project imports:
 import 'package:resas/src/adapter/adapter.dart';
 import 'package:resas/src/const/hotel_analysis_facility_stack_display_type.dart';
-import 'package:resas/src/const/hotel_analysis_facility_stack_display_unit.dart';
+import 'package:resas/src/const/hotel_analysis_facility_stack_unit.dart';
 import 'package:resas/src/model/tourism/local/hotel_analysis_facility_stack.dart';
 import 'package:resas/src/request/request.dart';
 import 'package:resas/src/resource.dart';
@@ -23,7 +23,7 @@ class HotelAnalysisFacilityStackRequest
   final HotelAnalysisFacilityStackDisplayType displayType;
 
   /// The unit
-  final HotelAnalysisFacilityStackDisplayUnit unit;
+  final HotelAnalysisFacilityStackUnit unit;
 
   /// The prefecture code
   final int prefectureCode;

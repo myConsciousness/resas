@@ -99,6 +99,9 @@ enum Resource {
 
   /// Hotel analysis facility stack
   hotelAnalysisFacilityStack,
+
+  /// Hotel analysis group stack
+  hotelAnalysisGroupStack,
 }
 
 /// The extension of [Resource].
@@ -170,6 +173,8 @@ extension ResourceExt on Resource {
         return 'api/v1/tourism/guest/prefLine';
       case Resource.hotelAnalysisFacilityStack:
         return 'api/v1/tourism/hotelAnalysis/facilityStack';
+      case Resource.hotelAnalysisGroupStack:
+        return 'api/v1/tourism/hotelAnalysis/groupStack';
     }
   }
 }

@@ -2,21 +2,20 @@
 // Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-enum HotelAnalysisFacilityStackDisplayUnit {
-  /// Year (Default)
+enum HotelAnalysisGroupStackUnit {
+  /// Year
   year,
 
   /// Month
   month,
 }
 
-extension HotelAnalysisFacilityStackDisplayUnitFeature
-    on HotelAnalysisFacilityStackDisplayUnit {
+extension HotelAnalysisGroupStackUnitFeature on HotelAnalysisGroupStackUnit {
   String get code {
     switch (this) {
-      case HotelAnalysisFacilityStackDisplayUnit.year:
+      case HotelAnalysisGroupStackUnit.year:
         return '0';
-      case HotelAnalysisFacilityStackDisplayUnit.month:
+      case HotelAnalysisGroupStackUnit.month:
         return '1';
     }
   }

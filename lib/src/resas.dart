@@ -5,6 +5,7 @@
 // Project imports:
 import 'package:resas/src/api/common/common_api.dart';
 import 'package:resas/src/api/population/population_api.dart';
+import 'package:resas/src/api/tourism/tourism_api.dart';
 import 'package:resas/src/resas_impl.dart';
 
 /// This abstract class provides feature for easy access to the RESAS API.
@@ -18,4 +19,6 @@ abstract class Resas {
   CommonApi get common;
 
   PopulationApi get population;
+
+  TourismApi get tourism;
 }
